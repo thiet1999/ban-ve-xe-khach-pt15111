@@ -8,6 +8,7 @@ $password = trim($_POST['password']);
 $cfpassword = trim($_POST['cfpassword']);
 $phone_number = trim($_POST['phone_number']);
 $role_id = trim($_POST['role_id']);
+
 // validate bằng php
 $nameerr = "";
 $emailerr = "";
@@ -46,10 +47,7 @@ if($nameerr . $emailerr . $passworderr != "" ){
 // mã hóa mật khẩu
 $password = password_hash($password, PASSWORD_DEFAULT);
 // upload file ảnh
-$insertUserQuery = "insert into users 
-                          (email, password, name, phone_number, role_id)
-                    values 
-                          ('$email', '$password', '$name', '$phone_number', '$role_id')";
+$insertUserQuery = "insert into users values(null,'$email', '$password', '$name', '$phone_number', '$role_id')";
 queryExecute($insertUserQuery, false);
 header("location: " . ADMIN_URL . "users");
 die;

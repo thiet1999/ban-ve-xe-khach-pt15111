@@ -1,7 +1,7 @@
-<?
-define('BASE_URL', 'http://localhost/ban-ve-xe-khach-pt15111');
-define('ADMIN_URL', BASE_URL . '/admin/');
-define('PUBLIC_URL', BASE_URL . '/public/');
+<?php
+define('BASE_URL', 'http://localhost/ban-ve-xe-khach-pt15111/');
+define('ADMIN_URL', BASE_URL . 'admin/');
+define('PUBLIC_URL', BASE_URL . 'public/');
 define('DEFAULT_IMAGE', PUBLIC_URL . '/images/default-image.jpg');
 define('AUTH', 'AUTH_SESSION');
 define("ACTIVE", 1);
@@ -9,7 +9,7 @@ define("INACTIVE", -1);
 
 function getdbConn() {
     try {
-        $host = "127.0.0.1";
+        $host = "localhost";
         $dbname = "ban-ve-xe-khach-pt15111";
         $dbusername = "root";
         $dbpass = "";

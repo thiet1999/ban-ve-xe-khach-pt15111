@@ -19,7 +19,7 @@ require_once "./config/utils.php";
 			<div class="col-4 offset-4">
                 <div class="login-logo">
                     <a href="<?php echo BASE_URL ?>">
-                        <img src="<?php echo BASE_URL . 'public/images/logo1.ico'?>" alt="" class="img-thumbnail">
+                        <img src="<?php echo BASE_URL . 'public/images/logo1.png'?>" alt="" class="img-thumbnail">
                     </a>
                 </div>
 				<form action="post-login.php" method="post">
