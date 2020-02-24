@@ -16,7 +16,6 @@
     <header class="border-bottom">
         <div class="container">
             <div class="row">
-            <h1>Nguyen Hong QUan</h1>
                 <div class="col-md-2 dashboard-logo">
                     <a href="#">
                         <img src="public/images/logo1.ico" alt="LOGO" class="">
