@@ -76,7 +76,7 @@ require_once '../../config/utils.php';
     </main>
 </div>
 <?php include_once '../share/script.php' ?>
-<script>
+<!-- <script>
     function encodeImageFileAsURL(element) {
         var file = element.files[0];
         if(file === undefined){
@@ -161,6 +161,6 @@ require_once '../../config/utils.php';
             }
         }
     });
-</script>
+</script> -->
 </body>
 </html>

@@ -2,12 +2,12 @@
 session_start();
 include_once "../../config/utils.php";
 // checkAdminLoggedIn();
-// $name = trim($_POST['name']);
-// $email = trim($_POST['email']);
-// $password = trim($_POST['password']);
-// $cfpassword = trim($_POST['cfpassword']);
-// $phone_number = trim($_POST['phone_number']);
-// $role_id = trim($_POST['role_id']);
+$name = trim($_POST['name']);
+$email = trim($_POST['email']);
+$password = trim($_POST['password']);
+$cfpassword = trim($_POST['cfpassword']);
+$phone_number = trim($_POST['phone_number']);
+$role_id = trim($_POST['role_id']);
 
 // validate bằng php
 $nameerr = "";
