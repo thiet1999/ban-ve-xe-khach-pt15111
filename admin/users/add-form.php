@@ -14,11 +14,11 @@ $roles = queryExecute($getRoleQuery, true);
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quản trị - Thêm tài khoản</title>
-    <?php include_once '../_share/style.php' ?>
+    <?php include_once '../share/style.php' ?>
 </head>
 <body>
 <div class="container">
-    <?php include_once '../_share/header.php' ?>
+    <?php include_once '../share/header.php' ?>
     <main class="container">
         <h3>Tạo tài khoản</h3>
         <form id="add-user-form" action="<?= ADMIN_URL . 'users/save-add.php'?>" method="post" enctype="multipart/form-data">
@@ -76,7 +76,7 @@ $roles = queryExecute($getRoleQuery, true);
 
     </main>
 </div>
-<?php include_once '../_share/script.php' ?>
+<?php include_once '../share/script.php' ?>
 <!-- <script>
     function encodeImageFileAsURL(element) {
         var file = element.files[0];
