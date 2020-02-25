@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once "../../config/utils.php";
-// checkAdminLoggedIn();
+checkAdminLoggedIn();
 $name = trim($_POST['name']);
 $email = trim($_POST['email']);
 $password = trim($_POST['password']);

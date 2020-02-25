@@ -28,20 +28,10 @@
                     <!-- <div class="collapse navbar-collapse" id="collapsibleNavbar"> -->
                     <ul class="navbar navbar-expand-md dashboard-nav nav justify-content-end">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Quản Lý Tài Khoản</a>
+                            <a class="nav-link active" href="#">Trang Chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Quản Lý Vé Xe</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Quản Lý Xe</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Quản Lý Loại Xe</a>
-                                <a class="dropdown-item" href="#">Quản Lý Nhà Xe</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Quản Lý Quãng Đường</a>
+                            <a class="nav-link" href="#">Thông tin</a>
                         </li>
                         <!-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, abcxyz</a>

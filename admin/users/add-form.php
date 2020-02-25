@@ -1,9 +1,9 @@
 <?php
 session_start();
 require_once '../../config/utils.php';
-// checkAdminLoggedIn();
-// $getRoleQuery = "select * from roles where status = 1";
-// $roles = queryExecute($getRoleQuery, true);
+checkAdminLoggedIn();
+$getRoleQuery = "select * from roles where status = 1";
+$roles = queryExecute($getRoleQuery, true);
 
 ?>
 <!doctype html>
@@ -50,12 +50,13 @@ require_once '../../config/utils.php';
                         <input type="password" class="form-control" name="cfpassword">
                     </div>
                     <div class="form-group">
-                        <label for="">Quyền</label>
-                        <select name="role_id" class="form-control">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                        </select>
-                    </div>
+                                <label for="">Quyền</label>
+                                <select name="role_id" class="form-control">
+                                    <?php foreach ($roles as $ro):?>
+                                        <option value="<?= $ro['id'] ?>"><?= $ro['name'] ?></option>
+                                    <?php endforeach?>
+                                </select>
+                            </div>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
