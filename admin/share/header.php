@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 require_once '../../config/utils.php';
 
 $loggedInUser = $_SESSION[AUTH];
@@ -35,7 +35,7 @@ $loggedInUser = $_SESSION[AUTH];
                         <a class="nav-link" href="#">Quản Lý Quãng Đường</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, abcxyz</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi,<php session_start(); ?> </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Thông tin cá nhân</a>
                             <a class="dropdown-item" href="#">Đổi mật khẩu</a>

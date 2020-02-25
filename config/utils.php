@@ -44,7 +44,7 @@ function checkAdminLoggedIn(){
         die;
     }
     // 2 - giá trị của cột role_id = 2
-    if($_SESSION[AUTH]['role_id'] > 1){
+    if($_SESSION[AUTH]['role_id'] >= 2){
         header('location: ' . BASE_URL . 'login.php?msg=Bạn không có quyền truy cập');
         die;
     }
