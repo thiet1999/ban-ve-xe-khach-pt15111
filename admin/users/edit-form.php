@@ -5,7 +5,23 @@ checkAdminLoggedIn();
 $getRoleQuery = "select * from roles where status = 1";
 $roles = queryExecute($getRoleQuery, true);
 
+
+// lấy thông tin của người dùng ra ngoài thông tin trên id đường dẫn
+$id = isset($_GET['id']) ? $_GET['id'] : -1;
+// kiểm tra tài khoản có tồn tại hay không
+$getUserByIdQuery = "select * from users where id = $id";
+$user = queryExecute($getUserByIdQuery, false);
+if(!$user){
+    header("location: " . ADMIN_URL . 'users?msg=Tài khoản không tồn tại');die;
+}
+
+// kiểm tra xem có quyền để thực hiện edit hay không
+if($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH]['role_id'] ){
+    header("location: " . ADMIN_URL . 'users?msg=Bạn không có quyền sửa thông tin tài khoản này');die;
+}
+
 ?>
+
 <!doctype html>
 <html lang="vn">
 <head>
@@ -13,14 +29,14 @@ $roles = queryExecute($getRoleQuery, true);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quản trị - Thêm tài khoản</title>
-    <?php include_once '../_share/style.php' ?>
+    <title>Quản trị - Sửa tài khoản</title>
+    <?php include_once '../share/style.php' ?>
 </head>
 <body>
 <div class="container">
-    <?php include_once '../_share/header.php' ?>
+    <?php include_once '../share/header.php' ?>
     <main class="container">
-        <h3>Tạo tài khoản</h3>
+        <h3>Sửa tài khoản</h3>
         <form id="add-user-form" action="<?= ADMIN_URL . 'users/save-add.php'?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
@@ -50,13 +66,12 @@ $roles = queryExecute($getRoleQuery, true);
                         <input type="password" class="form-control" name="cfpassword">
                     </div>
                     <div class="form-group">
-                                <label for="">Quyền</label>
-                                <select name="role_id" class="form-control">
-                                    <?php foreach ($roles as $ro):?>
-                                        <option value="<?= $ro['id'] ?>"><?= $ro['name'] ?></option>
-                                    <?php endforeach?>
-                                </select>
-                            </div>
+                        <label for="">Quyền</label>
+                        <select name="role_id" class="form-control">
+                            <option value="">1</option>
+                            <option value="">2</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
@@ -76,7 +91,7 @@ $roles = queryExecute($getRoleQuery, true);
 
     </main>
 </div>
-<?php include_once '../_share/script.php' ?>
+<?php include_once '../share/script.php' ?>
 <!-- <script>
     function encodeImageFileAsURL(element) {
         var file = element.files[0];
