@@ -78,18 +78,6 @@ $roles = queryExecute($getRoleQuery, true);
 </div>
 <?php include_once '../share/script.php' ?>
 <!-- <script>
-    function encodeImageFileAsURL(element) {
-        var file = element.files[0];
-        if(file === undefined){
-            $('#preview-img').attr('src', "<?= DEFAULT_IMAGE ?>");
-            return false;
-        }
-        var reader = new FileReader();
-        reader.onloadend = function() {
-            $('#preview-img').attr('src', reader.result)
-        }
-        reader.readAsDataURL(file);
-    }
     $('#add-user-form').validate({
         rules:{
             name: {
@@ -121,13 +109,7 @@ $roles = queryExecute($getRoleQuery, true);
             phone_number: {
                 number: true
             },
-            house_no:{
-                maxlength: 191
-            },
-            avatar: {
-                required: true,
-                extension: "png|jpg|jpeg|gif"
-            }
+           
         },
         messages: {
             name: {
@@ -153,13 +135,7 @@ $roles = queryExecute($getRoleQuery, true);
                 max: "Bắt buộc là số có 10 chữ số",
                 number: "Nhập định dạng số"
             },
-            house_no:{
-                maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-            },
-            avatar: {
-                required: "Hãy nhập ảnh đại diện",
-                extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
-            }
+           
         }
     });
 </script> -->
