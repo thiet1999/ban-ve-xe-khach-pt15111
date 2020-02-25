@@ -1,8 +1,8 @@
 <?php
-// session_start();
-// require_once '../../config/utils.php';
+session_start();
+require_once '../../config/utils.php';
 
-// $loggedInUser = $_SESSION[AUTH];
+$loggedInUser = $_SESSION[AUTH];
 ?>
 <header class="border-bottom">
     <div class="container">

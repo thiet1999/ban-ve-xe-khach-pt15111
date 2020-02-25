@@ -2,7 +2,7 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-$getRoleQuery = "select * from roles where status = 1";
+$getRoleQuery = "select * from roles";
 $roles = queryExecute($getRoleQuery, true);
 
 ?>
@@ -53,7 +53,7 @@ $roles = queryExecute($getRoleQuery, true);
                                 <label for="">Quyền</label>
                                 <select name="role_id" class="form-control">
                                     <?php foreach ($roles as $ro):?>
-                                        <option value="<?= $ro['id'] ?>"><?= $ro['name'] ?></option>
+                                        <option value="<?= $ro['status'] ?>"><?= $ro['name'] ?></option>
                                     <?php endforeach?>
                                 </select>
                             </div>
