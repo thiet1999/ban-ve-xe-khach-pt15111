@@ -104,10 +104,8 @@ $users = queryExecute($getUsersQuery, true);
                         <th>Tên</th>
                         <th>Email</th>
                         <th>Loại tài khoản</th>
-                        <th width="100">Ảnh</th>
-                        <th>Căn hộ</th>
                         <th>Số ĐT</th>
-                        <th>Số lượng xe</th>
+                        <th>Số lượng vé</th>
                         <th>
                             <a href="<?php echo ADMIN_URL . 'users/add-form.php'?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                         </th>
@@ -121,10 +119,6 @@ $users = queryExecute($getUsersQuery, true);
                                 <td>
                                     <?php echo $us['role_name']?>
                                 </td>
-                                <td>
-                                    <img class="img-fluid" src="<?= BASE_URL . $us['avatar']?>" alt="">
-                                </td>
-                                <td><?php echo $us['house_no']?></td>
                                 <td><?php echo $us['phone_number']?></td>
                                 <td><?php echo $us['id']?></td>
                                 <td>
