@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once "./config/utils.php";
+$loggedInUser = $_SESSION[AUTH];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="./public/css/main.css">
+    <link rel="stylesheet" href="\public\css\main.css">
     <title>Bán vé xe khách - Trang chủ</title>
 </head>
 
@@ -16,15 +21,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2 dashboard-logo">
-                    <a href="#">
-                        <img src="public/images/logo1.ico" alt="LOGO" class="">
+                    <a href="<?= BASE_URL ?>">
+                        <img src="./public/images/logo1.ico" alt="LOGO" class="img-fluid">
                     </a>
                 </div>
                 <div class="col-md-10">
-                    <!-- <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button> -->
-                    <!-- <div class="collapse navbar-collapse" id="collapsibleNavbar"> -->
                     <ul class="navbar navbar-expand-md dashboard-nav nav justify-content-end">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Quản Lý Tài Khoản</a>
@@ -42,19 +43,22 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Quản Lý Quãng Đường</a>
                         </li>
-                        <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, abcxyz</a>
+                        <?php if ($loggedInUser) : ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, <?= $loggedInUser['name'] ?></a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">Thông tin cá nhân</a>
                                     <a class="dropdown-item" href="#">Đổi mật khẩu</a>
                                     <a class="dropdown-item" href="#">Thông tin vé xe</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Đăng xuất</a>
+                                    <a class="dropdown-item" href="<?php echo BASE_URL . './logout.php' ?>">Đăng xuất</a>
                                 </div>
-                            </li> -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" title="">Đăng Nhập</a>
-                        </li>
+                            </li>
+                        <?php else : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login.php" title="">Đăng Nhập</a>
+                            </li>
+                        <?php endif ?>
                     </ul>
                     <!-- </div> -->
                 </div>
@@ -169,15 +173,21 @@
             </div>
         </div>
         <!--END CONTACT - START FOOTER-->
-        <footer>
-            <div class="container pt-2 text-center">
-                <p>Công ty Company</p>
-                <p>Địa chỉ: Lầu 8,9, Tòa nhà CirCO, 222 Điện Biên Phủ, Quận 3, TP. Hồ Chí Minh, Việt Nam</p>
+        <footer class="container-fluid">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <p class="text-center">
+                        ICID Complex - Địa chỉ: Lô 37 Lê Trọng Tấn, Dương Nội, Hà Đông, Hà Nội
+                    </p>
+                </div>
             </div>
         </footer>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script>
+
+        </script>
 </body>
 
 </html>
