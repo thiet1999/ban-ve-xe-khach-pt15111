@@ -14,6 +14,7 @@ $tickets = queryExecute($getAllTicketSql, true);
 # Lấy ra tất cả các bản ghi trong bảng vehicles
 $getAllVehicleSql = "select * from vehicles";
 $vehicles = queryExecute($getAllVehicleSql, true);
+
 ?>
 <!DOCTYPE html>
 <html>

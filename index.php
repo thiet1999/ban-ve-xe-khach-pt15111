@@ -28,20 +28,10 @@ $loggedInUser = $_SESSION[AUTH];
                 <div class="col-md-10">
                     <ul class="navbar navbar-expand-md dashboard-nav nav justify-content-end">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Quản Lý Tài Khoản</a>
+                            <a class="nav-link active" href="#">Trang Chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Quản Lý Vé Xe</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Quản Lý Xe</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Quản Lý Loại Xe</a>
-                                <a class="dropdown-item" href="#">Quản Lý Nhà Xe</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Quản Lý Quãng Đường</a>
+                            <a class="nav-link" href="#">Tin Tức</a>
                         </li>
                         <?php if ($loggedInUser) : ?>
                             <li class="nav-item dropdown">
@@ -70,33 +60,37 @@ $loggedInUser = $_SESSION[AUTH];
         <div class="container">
             <h1 class="slogan h3 text-center text-capitalize">đặt vé xe trước, nhận chỗ sớm, không lo hết vé</h1>
             <p class="text-center text-uppercase h4 font-weight-bold">tìm vé xe</p>
-            <div class="row">
-                <div class="col-4 form-group">
-                    <label for="my-select" class="text-capitalize font-weight-bold">Điểm đầu</label>
-                    <select id="my-select" class="form-control" name="">
-                        <option>Text</option>
-                        <option>Text</option>
-                        <option>Text</option>
-                        <option>Text</option>
-                        <option>Text</option>
-                    </select>
+            <form method="get" action="" enctype="multipart/form-data" class="col">
+                <div class="row">
+                    <div class="col-4 form-group">
+                        <label for="my-select" class="text-capitalize font-weight-bold">Điểm đầu</label>
+                        <select id="my-select" class="form-control" name="">
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                        </select>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="" class="text-capitalize font-weight-bold">Chọn ngày</label>
+                        <input type="date" name="" id="" class="form-control">
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="my-select" class="text-capitalize font-weight-bold">điểm cuối</label>
+                        <select id="my-select" class="form-control" name="">
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-4 form-group">
-                    <label for="" class="text-capitalize font-weight-bold">Chọn ngày</label>
-                    <input type="date" name="" id="" class="form-control">
+                <div class="justify-content-center">
+                    <button class="btn btn-primary" type="submit" name="">Tìm Vé</button>
                 </div>
-                <div class="col-4 form-group">
-                    <label for="my-select" class="text-capitalize font-weight-bold">điểm cuối</label>
-                    <select id="my-select" class="form-control" name="">
-                        <option>Text</option>
-                        <option>Text</option>
-                        <option>Text</option>
-                        <option>Text</option>
-                        <option>Text</option>
-                    </select>
-                </div>
-            </div>
-            <input id="my-input" class="form-control btn btn-primary col-2 center" type="submit" name="" value="Tìm Vé">
+            </form>
         </div>
     </div>
     <!--END BANNER - START NEWS-->
