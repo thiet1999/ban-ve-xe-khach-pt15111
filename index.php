@@ -1,8 +1,7 @@
 <?php
 session_start();
 require_once './config/utils.php';
-$loggedInUser=$_SESSION[AUTH];
-echo $loggedInUser['name'];
+// checkAdminLoggedIn();
 
 ?>
 <!DOCTYPE html>
@@ -12,7 +11,7 @@ echo $loggedInUser['name'];
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đặt Vé - Trang Chủ</title>
+    <title>Đặt Vé Xe - Trang Chủ</title>
 
     <!-- Bootstrap -->
     <link href="<?= THEME_ASSET_URL ?>dist/css/bootstrap.css" rel="stylesheet" media="screen">
@@ -60,7 +59,7 @@ echo $loggedInUser['name'];
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="index.php" class="navbar-brand"><img src="public/images/logo1.ico" alt="Travel Agency Logo" class="logo"/></a>
+                    <a href="index-2.html" class="navbar-brand"><img src="public/images/logo1.ico" alt="Travel Agency Logo" class="logo"/></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -154,14 +153,14 @@ echo $loggedInUser['name'];
                                     </div>
                                 </li>
                             </ul>
-                        </li>
-                        <li><a href="#">Hotels</a></li>
+                        </li> -->
+                        <!-- <li><a href="#">Hotels</a></li>
                         <li><a href="#">Flights</a></li>
                         <li><a href="#">Vacations</a></li>
                         <li><a href="#">Cars</a></li>
                         <li><a href="#">Cruises</a></li> -->
                         <li><a href="#">Tin Tức</a></li>
-                        <li><a href="login.php">Đăng Nhập</a></li>
+                        <li><a href="login.php">Đăng nhập</a></li>
                         <!-- <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Deals<b class="lightcaret mt-2"></b></a>
                             <ul class="dropdown-menu">
@@ -334,13 +333,13 @@ echo $loggedInUser['name'];
 
     <div class="container mt-200 z-index100">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md">
                 <div class="bs-example bs-example-tabs cstyle04">
 
                     <ul class="nav nav-tabs" id="myTab">
                         <!-- <li onclick="mySelectUpdate()" class="active"><a data-toggle="tab" href="#air"><span class="flight"></span> Air</a></li>
                         <li onclick="mySelectUpdate()" class=""><a data-toggle="tab" href="#hotel"><span class="hotel"></span>Hotel</a></li> -->
-                        <li onclick="mySelectUpdate()" class=""><a data-toggle="tab" href="#car"><span class="car"></span>Chọn vé xe</a></li>
+                        <li onclick="mySelectUpdate()" class=""><a data-toggle="tab" href="#car"><span class="car"></span>Đặt vé</a></li>
                         <!-- <li onclick="mySelectUpdate()" class=""><a data-toggle="tab" href="#vacations"><span class="suitcase"></span>Vacations</a></li> -->
                     </ul>
 
@@ -350,6 +349,7 @@ echo $loggedInUser['name'];
                             <div class="w50percent">
                                 <div class="wh90percent textleft">
                                     <span class="opensans size13"><b>Điểm đi</b></span>
+                                    <input type="text" class="form-control" placeholder="nhập điểm đi">
                                 </div>
                             </div>
 
@@ -365,7 +365,7 @@ echo $loggedInUser['name'];
 
                             <div class="w50percent">
                                 <div class="wh90percent textleft">
-                                    <span class="opensans size13"><b>Thời gian</b></span>
+                                    <span class="opensans size13"><b>Thời Gian</b></span>
                                     <input type="text" class="form-control mySelectCalendar" id="datepicker3" placeholder="mm/dd/yyyy"/>
                                 </div>
                             </div>
@@ -379,492 +379,10 @@ echo $loggedInUser['name'];
 
                             <div class="clearfix"></div>
 
-                            <div class="room1 margtop15">
-                                <div class="w50percent">
-                                    <div class="wh90percent textleft">
-                                        <span class="opensans size13"><b>Adult</b></span>
-                                        <select class="form-control mySelectBoxClass">
-                                            <option>1</option>
-                                            <option selected>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="w50percentlast">
-                                    <div class="wh90percent textleft right">
-                                        <span class="opensans size13"><b>Child</b></span>
-                                        <select class="form-control mySelectBoxClass">
-                                            <option>0</option>
-                                            <option selected>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                         <!--End of 1st tab -->
 
-                        <div id="hotel" class="tab-pane fade">
-
-                            <span class="opensans size18">Where do you want to go?</span>
-                            <input type="text" class="form-control" placeholder="Greece">
-
-                            <br/>
-
-                            <div class="w50percent">
-                                <div class="wh90percent textleft">
-                                    <span class="opensans size13"><b>Check in date</b></span>
-                                    <input type="text" class="form-control mySelectCalendar" id="datepicker" placeholder="mm/dd/yyyy"/>
-                                </div>
-                            </div>
-
-                            <div class="w50percentlast">
-                                <div class="wh90percent textleft right">
-                                    <span class="opensans size13"><b>Check in date</b></span>
-                                    <input type="text" class="form-control mySelectCalendar" id="datepicker2" placeholder="mm/dd/yyyy"/>
-                                </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <div class="room1 margtop15">
-                                <div class="w50percent">
-                                    <div class="wh90percent textleft">
-                                        <span class="opensans size13"><b>ROOM 1</b></span><br/>
-
-                                        <div class="addroom1 block"><a href="#room2" onclick="addroom2()" class="grey">+ Add room</a></div>
-                                    </div>
-                                </div>
-
-                                <div class="w50percentlast">
-                                    <div class="wh90percent textleft right ohidden">
-                                        <div class="w50percent">
-                                            <div class="wh90percent textleft left">
-                                                <span class="opensans size13"><b>Adult</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option>1</option>
-                                                    <option selected>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="w50percentlast">
-                                            <div class="wh90percent textleft right ohidden">
-                                                <span class="opensans size13"><b>Child</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option>0</option>
-                                                    <option selected>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="room2 none">
-                                <div class="clearfix"></div><div class="line1"></div>
-                                <div class="w50percent">
-                                    <div class="wh90percent textleft">
-                                        <span class="opensans size13"><b>ROOM 2</b></span><br/>
-                                        <div class="addroom2 block grey"><a href="#" onclick="addroom3()" class="grey">+ Add room</a> | <a href="#" onclick="removeroom2()" class="orange"><img src="<?= THEME_ASSET_URL ?>images/delete.png" alt="delete"/></a></div>
-                                    </div>
-                                </div>
-
-                                <div class="w50percentlast">
-                                    <div class="wh90percent textleft right">
-                                        <div class="w50percent">
-                                            <div class="wh90percent textleft left">
-                                                <span class="opensans size13"><b>Adult</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option selected>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="w50percentlast">
-                                            <div class="wh90percent textleft right">
-                                                <span class="opensans size13"><b>Child</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option selected>0</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="room3 none">
-                                <div class="clearfix"></div><div class="line1"></div>
-                                <div class="w50percent">
-                                    <div class="wh90percent textleft">
-                                        <span class="opensans size13"><b>ROOM 3</b></span><br/>
-                                        <div class="addroom3 block grey"><a href="#" onclick="addroom3()" class="grey">+ Add room</a> | <a href="#" onclick="removeroom3()" class="orange"><img src="<?= THEME_ASSET_URL ?>images/delete.png" alt="delete"/></a></div>
-                                    </div>
-                                </div>
-
-                                <div class="w50percentlast">
-                                    <div class="wh90percent textleft right">
-                                        <div class="w50percent">
-                                            <div class="wh90percent textleft left">
-                                                <span class="opensans size13"><b>Adult</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option selected>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="w50percentlast">
-                                            <div class="wh90percent textleft right">
-                                                <span class="opensans size13"><b>Child</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option selected>0</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <!--End of 2nd tab -->
-
-                        <div id="car" class="tab-pane fade">
-
-                            <div class="w50percent">
-                                <div class="wh90percent textleft">
-                                    <span class="opensans size13"><b>Picking up</b></span>
-                                    <input type="text" class="form-control" placeholder="Airport, address">
-                                </div>
-                            </div>
-
-                            <div class="w50percentlast">
-                                <div class="wh90percent textleft right">
-                                    <span class="opensans size13"><b>Dropping off</b></span>
-                                    <input type="text" class="form-control" placeholder="Airport, address">
-                                </div>
-                            </div>
-
-
-                            <div class="clearfix"></div><br/>
-
-                            <div class="w50percent">
-                                <div class="wh90percent textleft">
-                                    <span class="opensans size13"><b>Pick up date</b></span>
-                                    <input type="text" class="form-control mySelectCalendar" id="datepicker5" placeholder="mm/dd/yyyy"/>
-                                </div>
-                            </div>
-
-                            <div class="w50percentlast">
-                                <div class="wh90percent textleft right">
-                                    <span class="opensans size13"><b>Hour</b></span>
-                                    <select class="form-control mySelectBoxClass">
-                                        <option>12:00 AM</option>
-                                        <option>12:30 AM</option>
-                                        <option>01:00 AM</option>
-                                        <option>01:30 AM</option>
-                                        <option>02:00 AM</option>
-                                        <option>02:30 AM</option>
-                                        <option>03:00 AM</option>
-                                        <option>03:30 AM</option>
-                                        <option>04:00 AM</option>
-                                        <option>04:30 AM</option>
-                                        <option>05:00 AM</option>
-                                        <option>05:30 AM</option>
-                                        <option>06:00 AM</option>
-                                        <option>06:30 AM</option>
-                                        <option>07:00 AM</option>
-                                        <option>07:30 AM</option>
-                                        <option>08:00 AM</option>
-                                        <option>08:30 AM</option>
-                                        <option>09:00 AM</option>
-                                        <option>09:30 AM</option>
-                                        <option>10:00 AM</option>
-                                        <option selected>10:30 AM</option>
-                                        <option>11:00 AM</option>
-                                        <option>11:30 AM</option>
-                                        <option>12:00 PM</option>
-                                        <option>12:30 PM</option>
-                                        <option>01:00 PM</option>
-                                        <option>01:30 PM</option>
-                                        <option>02:00 PM</option>
-                                        <option>02:30 PM</option>
-                                        <option>03:00 PM</option>
-                                        <option>03:30 PM</option>
-                                        <option>04:00 PM</option>
-                                        <option>04:30 PM</option>
-                                        <option>05:00 PM</option>
-                                        <option>05:30 PM</option>
-                                        <option>06:00 PM</option>
-                                        <option>06:30 PM</option>
-                                        <option>07:00 PM</option>
-                                        <option>07:30 PM</option>
-                                        <option>08:00 PM</option>
-                                        <option>08:30 PM</option>
-                                        <option>09:00 PM</option>
-                                        <option>09:30 PM</option>
-                                        <option>10:00 PM</option>
-                                        <option>10:30 PM</option>
-                                        <option>11:00 PM</option>
-                                        <option>11:30 PM</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <div class="room1 margtop15">
-                                <div class="w50percent">
-                                    <div class="wh90percent textleft">
-                                        <span class="opensans size13"><b>Drop off date</b></span>
-                                        <input type="text" class="form-control mySelectCalendar" id="datepicker6" placeholder="mm/dd/yyyy"/>
-                                    </div>
-                                </div>
-
-                                <div class="w50percentlast">
-                                    <div class="wh90percent textleft right">
-                                        <span class="opensans size13"><b>Hour</b></span>
-                                        <select class="form-control mySelectBoxClass">
-                                            <option>12:00 AM</option>
-                                            <option>12:30 AM</option>
-                                            <option>01:00 AM</option>
-                                            <option>01:30 AM</option>
-                                            <option>02:00 AM</option>
-                                            <option>02:30 AM</option>
-                                            <option>03:00 AM</option>
-                                            <option>03:30 AM</option>
-                                            <option>04:00 AM</option>
-                                            <option>04:30 AM</option>
-                                            <option>05:00 AM</option>
-                                            <option>05:30 AM</option>
-                                            <option>06:00 AM</option>
-                                            <option>06:30 AM</option>
-                                            <option>07:00 AM</option>
-                                            <option>07:30 AM</option>
-                                            <option>08:00 AM</option>
-                                            <option>08:30 AM</option>
-                                            <option>09:00 AM</option>
-                                            <option>09:30 AM</option>
-                                            <option>10:00 AM</option>
-                                            <option selected>10:30 AM</option>
-                                            <option>11:00 AM</option>
-                                            <option>11:30 AM</option>
-                                            <option>12:00 PM</option>
-                                            <option>12:30 PM</option>
-                                            <option>01:00 PM</option>
-                                            <option>01:30 PM</option>
-                                            <option>02:00 PM</option>
-                                            <option>02:30 PM</option>
-                                            <option>03:00 PM</option>
-                                            <option>03:30 PM</option>
-                                            <option>04:00 PM</option>
-                                            <option>04:30 PM</option>
-                                            <option>05:00 PM</option>
-                                            <option>05:30 PM</option>
-                                            <option>06:00 PM</option>
-                                            <option>06:30 PM</option>
-                                            <option>07:00 PM</option>
-                                            <option>07:30 PM</option>
-                                            <option>08:00 PM</option>
-                                            <option>08:30 PM</option>
-                                            <option>09:00 PM</option>
-                                            <option>09:30 PM</option>
-                                            <option>10:00 PM</option>
-                                            <option>10:30 PM</option>
-                                            <option>11:00 PM</option>
-                                            <option>11:30 PM</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!--End of 3rd tab -->
-
-                        <div id="vacations" class="tab-pane fade">
-
-                            <div class="w50percent">
-                                <div class="wh90percent textleft">
-                                    <span class="opensans size13"><b>Flying from</b></span>
-                                    <input type="text" class="form-control" placeholder="City or airport">
-                                </div>
-                            </div>
-
-                            <div class="w50percentlast">
-                                <div class="wh90percent textleft right">
-                                    <span class="opensans size13"><b>To</b></span>
-                                    <input type="text" class="form-control" placeholder="City or airport">
-                                </div>
-                            </div>
-
-                            <div class="clearfix"></div><br/>
-
-                            <div class="w50percent">
-                                <div class="wh90percent textleft">
-                                    <span class="opensans size13"><b>Check in date</b></span>
-                                    <input type="text" class="form-control mySelectCalendar" id="datepicker7" placeholder="mm/dd/yyyy"/>
-                                </div>
-                            </div>
-
-                            <div class="w50percentlast">
-                                <div class="wh90percent textleft right">
-                                    <span class="opensans size13"><b>Check in date</b></span>
-                                    <input type="text" class="form-control mySelectCalendar" id="datepicker8" placeholder="mm/dd/yyyy"/>
-                                </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <div class="room1 margtop15">
-                                <div class="w50percent">
-                                    <div class="wh90percent textleft">
-                                        <span class="opensans size13"><b>ROOM 1</b></span><br/>
-
-                                        <div class="addroom1 block"><a href="#room2" onclick="addroom2()" class="grey">+ Add room</a></div>
-                                    </div>
-                                </div>
-
-                                <div class="w50percentlast">
-                                    <div class="wh90percent textleft right">
-                                        <div class="w50percent">
-                                            <div class="wh90percent textleft left">
-                                                <span class="opensans size13"><b>Adult</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option>1</option>
-                                                    <option selected>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="w50percentlast">
-                                            <div class="wh90percent textleft right">
-                                                <span class="opensans size13"><b>Child</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option>0</option>
-                                                    <option selected>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="room2 none">
-                                <div class="clearfix"></div><div class="line1"></div>
-                                <div class="w50percent">
-                                    <div class="wh90percent textleft">
-                                        <span class="opensans size13"><b>ROOM 2</b></span><br/>
-                                        <div class="addroom2 block grey"><a href="#" onclick="addroom3()" class="grey">+ Add room</a> | <a href="#" onclick="removeroom2()" class="orange"><img src="<?= THEME_ASSET_URL ?>images/delete.png" alt="delete"/></a></div>
-                                    </div>
-                                </div>
-
-                                <div class="w50percentlast">
-                                    <div class="wh90percent textleft right">
-                                        <div class="w50percent">
-                                            <div class="wh90percent textleft left">
-                                                <span class="opensans size13"><b>Adult</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option selected>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="w50percentlast">
-                                            <div class="wh90percent textleft right">
-                                                <span class="opensans size13"><b>Child</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option selected>0</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="room3 none">
-                                <div class="clearfix"></div><div class="line1"></div>
-                                <div class="w50percent">
-                                    <div class="wh90percent textleft">
-                                        <span class="opensans size13"><b>ROOM 3</b></span><br/>
-                                        <div class="addroom3 block grey"><a href="#" onclick="addroom3()" class="grey">+ Add room</a> | <a href="#" onclick="removeroom3()" class="orange"><img src="<?= THEME_ASSET_URL ?>images/delete.png" alt="delete"/></a></div>
-                                    </div>
-                                </div>
-
-                                <div class="w50percentlast">
-                                    <div class="wh90percent textleft right">
-                                        <div class="w50percent">
-                                            <div class="wh90percent textleft left">
-                                                <span class="opensans size13"><b>Adult</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option selected>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="w50percentlast">
-                                            <div class="wh90percent textleft right">
-                                                <span class="opensans size13"><b>Child</b></span>
-                                                <select class="form-control mySelectBoxClass">
-                                                    <option selected>0</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                        
                         <!--End of 4th tab -->
                     </div>
 
@@ -876,22 +394,22 @@ echo $loggedInUser['name'];
 
                 </div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="shadow cstyle05">
                     <div class="fwi one"><img src="<?= THEME_ASSET_URL ?>images/rome.jpg" alt="" /><div class="mhover none"><span class="icon"><a href="list4.html"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt=""/></a></span></div></div>
                     <div class="ctitle">Rome<a href="list4.html"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt=""/></a>
                         <span>$59.99</span>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
+            </div> -->
+            <!-- <div class="col-md-4">
                 <div class="shadow cstyle05">
                     <div class="fwi one"><img src="<?= THEME_ASSET_URL ?>images/surfer.jpg" alt="" /><div class="mhover none"><span class="icon"><a href="list4.html"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt=""/></a></span></div></div>
                     <div class="ctitle">Cote d'azur<a href="list4.html"><img src="<?= THEME_ASSET_URL ?>images/spacer.png" alt=""/></a>
                         <span>$59.99</span>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
