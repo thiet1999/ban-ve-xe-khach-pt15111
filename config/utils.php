@@ -6,6 +6,8 @@ define('ADMIN_URL', BASE_URL . 'admin/');
 define('PUBLIC_URL', BASE_URL . 'public/');
 define('ADMIN_ASSET_URL', PUBLIC_URL . 'admin/');
 
+define('THEME_ASSET_URL', PUBLIC_URL . 'blue/');
+
 define('DEFAULT_IMAGE', PUBLIC_URL . 'images/default-image.jpg');
 define('AUTH', 'AUTH_SESSION');
 define("ACTIVE", 1);
