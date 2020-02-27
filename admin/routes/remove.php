@@ -15,10 +15,10 @@ include_once "../../config/utils.php";
 checkAdminLoggedIn();
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
 
-$getRemoveVehiclesQuery = "select * from vehicles where id = $id";
-$removeVehicle = queryExecute($getRemoveVehiclesQuery, false);
-if(!$removeVehicle){
-    header("location: " . ADMIN_URL . "vehicles?msg=Phương tiện không tồn tại");
+$getRemoveRoutesQuery = "select * from routes where id = '$id'";
+$removeRoutes = queryExecute($getRemoveRoutesQuery, false);
+if(!$removeRoutes){
+    header("location: " . ADMIN_URL . "routes?msg=Quãng đường không tồn tại");
     die;
 }
 
@@ -27,7 +27,7 @@ if(!$removeVehicle){
 //    die;
 //}
 
-$removeVehicleQuery = "delete from vehicles where id = $id";
-queryExecute($removeVehicleQuery, false);
-header("location: " . ADMIN_URL . "vehicles?msg=Xóa phương tiện thành công");
+$removeRoutesQuery = "delete from routes where id = $id";
+queryExecute($removeRoutesQuery, false);
+header("location: " . ADMIN_URL . "routes?msg=Xóa quãng đường thành công");
 die;
