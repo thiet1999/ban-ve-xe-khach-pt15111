@@ -6,7 +6,6 @@ checkAdminLoggedIn();
 // danh sách routes
 $getRoutesQuery = "select * from routes";
 $routes = queryExecute($getRoutesQuery, true);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,7 +60,7 @@ $routes = queryExecute($getRoutesQuery, true);
                             </div>
                             <div class="form-group">
                                 <label for="">Điểm cuối<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="end">
+                                <input type="text" class="form-control" name="end_point">
                             </div>
                             <div class="col-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">Thêm</button>

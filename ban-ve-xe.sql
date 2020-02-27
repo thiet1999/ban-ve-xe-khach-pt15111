@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2020 at 09:35 AM
+-- Generation Time: Feb 27, 2020 at 12:09 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -21,18 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ban-ve-xe`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `companies`
---
-
-CREATE TABLE `companies` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `infomation` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -91,10 +79,17 @@ INSERT INTO `roles` (`id`, `name`, `status`) VALUES
 CREATE TABLE `routes` (
   `id` int(11) NOT NULL,
   `distance` varchar(255) NOT NULL,
-  `estimate_time` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `estimate_time` text NOT NULL DEFAULT 'current_timestamp(6)',
   `begin_point` varchar(255) NOT NULL,
   `end_point` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `routes`
+--
+
+INSERT INTO `routes` (`id`, `distance`, `estimate_time`, `begin_point`, `end_point`) VALUES
+(0, '180km', '03:40', 'Bx Mỹ Đình', '');
 
 -- --------------------------------------------------------
 
@@ -131,7 +126,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone_number`, `role_id`) VALUES
 (3, 'Quân', 'helgrindxxx@gmail.com', '$2y$10$Y9.idjtygJa0/9r6XEMh.eDInq2/X7IcoraJvi5dmyCqr0Fgcyat6', '914946200', 6),
 (5, 'Hồng Quân', 'quannh@gmail.com', '$2y$10$YaVvbXR8r3SUcduOexpuCuAMPQLyejw16RE4lMXWN1ZWl5qCZpxw.', '0123456789', 4),
-(6, 'Trần Hữu Thiện', 'thienth@gmail.com', '$2y$10$4ijdV/Z4EA7fLZRnYGmhMeLo9.a7wgyBpCap1V5SjPKSTenSDTSFa', '0868456456', 5);
+(6, 'Trần Hữu Thiện', 'thienth@gmail.com', '$2y$10$4ijdV/Z4EA7fLZRnYGmhMeLo9.a7wgyBpCap1V5SjPKSTenSDTSFa', '0868456456', 5),
+(7, 'Hong Son', 'son@gmail.com', '$2y$10$Y9.idjtygJa0/9r6XEMh.eDInq2/X7IcoraJvi5dmyCqr0Fgcyat6', '0123456789', 6),
+(8, 'Thiet', 'thiet@gmail.com', '$2y$10$Y9.idjtygJa0/9r6XEMh.eDInq2/X7IcoraJvi5dmyCqr0Fgcyat6', '0123456589', 6);
 
 -- --------------------------------------------------------
 
@@ -143,9 +140,15 @@ CREATE TABLE `vehicles` (
   `id` int(11) NOT NULL,
   `vehicletype_id` int(11) NOT NULL,
   `seat_booked` varchar(255) NOT NULL,
-  `plate_number` varchar(255) NOT NULL,
-  `company_id` int(11) NOT NULL
+  `plate_number` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vehicles`
+--
+
+INSERT INTO `vehicles` (`id`, `vehicletype_id`, `seat_booked`, `plate_number`) VALUES
+(1, 1, '30', '29T9-999.99');
 
 -- --------------------------------------------------------
 
@@ -160,14 +163,16 @@ CREATE TABLE `vehicle_types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `vehicle_types`
 --
 
+INSERT INTO `vehicle_types` (`id`, `name`, `status`) VALUES
+(1, 'Limousin', 0),
+(2, 'Xe Bus 29', 0);
+
 --
--- Indexes for table `companies`
+-- Indexes for dumped tables
 --
-ALTER TABLE `companies`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `orders`
@@ -215,18 +220,17 @@ ALTER TABLE `users`
 -- Indexes for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `company_id` (`company_id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vehicle_types`
+--
+ALTER TABLE `vehicle_types`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `companies`
---
-ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
@@ -250,13 +254,19 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `vehicle_types`
+--
+ALTER TABLE `vehicle_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -287,12 +297,6 @@ ALTER TABLE `tickets`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
-
---
--- Constraints for table `vehicles`
---
-ALTER TABLE `vehicles`
-  ADD CONSTRAINT `vehicles_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

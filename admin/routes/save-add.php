@@ -24,7 +24,7 @@ if(strlen($distance) == 0){
     $distancerr = "Yêu cầu nhập khoảng cách quãng đường";
 }
 
-$insertRoutesQuery = "insert into routes
+$insertRoutesQuery = "insert into 'routes'
                           (distance, estimate_time, begin_point, end_point)
                     values
                           ('$distance', '$estimate_time','$begin_point', '$end_point')";
