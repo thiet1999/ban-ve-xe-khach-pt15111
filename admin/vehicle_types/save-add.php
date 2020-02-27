@@ -25,9 +25,9 @@ if($nameerr . $nameExisterr!= "" ){
     header('location: ' . ADMIN_URL . "vehicle_types/add-form.php?nameerr=$nameerr&nameExisterr=$nameExisterr");
     die;
 }
-$insertTypeQuery = "insert into vehicle_types 
+$insertTypeQuery = "insert into vehicle_types
                           (name, status)
-                    values 
+                    values
                           ('$name', '$status')";
 queryExecute($insertTypeQuery, false);
 header("location: " . ADMIN_URL . "vehicle_types");

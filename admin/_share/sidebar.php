@@ -101,9 +101,9 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-shopping-bag"></i>
+                        <i class="nav-icon fas fa-ticket-alt"></i>
                         <p>
-                            Đơn Đặt Hàng
+                            Vé Xe
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>

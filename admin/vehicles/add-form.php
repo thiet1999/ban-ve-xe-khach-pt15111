@@ -55,31 +55,15 @@ $users = queryExecute($getUsersQuery, true);
                             </div>
                             <div class="form-group">
                                 <label for="">Loại xe<span class="text-danger">*</span></label>
-                                <select name="type_id" class="form-control">
+                                <select name="vehicletype_id" class="form-control">
                                     <?php foreach ($vehicleTypes as $key => $type): ?>
                                         <option value="<?php echo $type['id'] ?>"><?php echo $type['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">Mã người dùng<span class="text-danger">*</span></label>
-                                <select name="owner_id" class="form-control">
-                                    <?php foreach ($users as $key => $type): ?>
-                                        <option value="<?php echo $type['id'] ?>"><?php echo $type['name'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Hãng xe<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="manufacture">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Màu sắc<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="color">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Model<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="model">
+                                <label for="">Số Ghế Có<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="seat_booked">
                             </div>
                             <div class="col-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">Thêm</button>

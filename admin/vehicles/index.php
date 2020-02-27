@@ -3,15 +3,21 @@ session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
 
-$getVehicleTypesQuery = "select * from vehicle_types where status = 0";
-$vehicleTypes = queryExecute($getVehicleTypesQuery, true);
+// $getVehicleTypesQuery = "select * from vehicle_types where status = 0";
+// $vehicleTypes = queryExecute($getVehicleTypesQuery, true);
 
-$getVehiclesQuery = "select * from vehicles";
+// $getVehiclesQuery = "select * from vehicles";
+// $vehicles = queryExecute($getVehiclesQuery, true);
+
+// danh sách vehicles
+$getVehiclesQuery = "select
+                    vehicles.*,
+                    vehicle_types.name as type_name
+                    from vehicles, vehicle_types
+                    where vehicles.vehicletype_id = vehicle_types.id";
 $vehicles = queryExecute($getVehiclesQuery, true);
-
-
-$getUsersQuery = "select * from users";
-$users = queryExecute($getUsersQuery, true);
+// $getVehicleTypeQuery = "select * from vehicle_types";
+// $VehicleTypes = queryExecute($getVehicleTypeQuery, true);
 ?>
 
 <!DOCTYPE html>
@@ -62,10 +68,7 @@ $users = queryExecute($getUsersQuery, true);
                         <th>ID</th>
                         <th>Biển số xe</th>
                         <th>Loại xe</th>
-                        <th>Mã người dùng</th>
-                        <th>Nhãn hiệu</th>
-                        <th>Màu sắc</th>
-                        <th>Model</th>
+                        <th>Số Ghế Có</th>
                         <th>
                             <a href="<?php echo ADMIN_URL . 'vehicles/add-form.php' ?>" class="btn btn-primary btn-sm"><i
                                     class="fa fa-plus"></i> Thêm</a>
@@ -76,11 +79,8 @@ $users = queryExecute($getUsersQuery, true);
                             <tr>
                                 <td><?php echo $vehicle['id'] ?></td>
                                 <td><?php echo $vehicle['plate_number'] ?></td>
-                                <td><?php echo $vehicle['type_id'] ?></td>
-                                <td><?php echo $vehicle['owner_id'] ?></td>
-                                <td><?php echo $vehicle['manufacturer'] ?></td>
-                                <td><?php echo $vehicle['color'] ?></td>
-                                <td><?php echo $vehicle['model'] ?></td>
+                                <td><?php echo $vehicle['type_name'] ?></td>
+                                <td><?php echo $vehicle['seat_booked'] ?></td>
                                 <td>
                                     <a href="<?php echo ADMIN_URL . 'vehicles/edit-form.php?id=' . $vehicle['id'] ?>"
                                        class="btn btn-sm btn-info">

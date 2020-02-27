@@ -3,37 +3,18 @@ session_start();
 include_once "../../config/utils.php";
 checkAdminLoggedIn();
 $plate_number = trim($_POST['plate_number']);
-$type_id = $_POST['type_id'];
-$owner_id = trim($_POST['owner_id']);
-$manufacture = trim($_POST['manufacture']);
-$color = trim($_POST['color']);
-$model = trim($_POST['model']);
-
+$vehicletype_id = trim($_POST['vehicletype_id']);
+$seat_booked = trim($_POST['seat_booked']);
 // validate bằng php
+
 $plate_numbererr = "";
-$owner_iderr = "";
-$manufactureerr = "";
-$colorerr = "";
-$modelerr = "";
+$seat_bookedrr = "";
 
 if(strlen($plate_number) < 2 || strlen($plate_number) > 191){
     $plate_numbererr = "Yêu cầu nhập trong khoảng 2-191 ký tự";
 }
 if(strlen($plate_number) == 0){
     $plate_numbererr = "Yêu cầu nhập biển số xe";
-}
-
-if(strlen($owner_id) == 0){
-    $emailerr = "Yêu cầu nhập mã số người dùng";
-}
-if(strlen($manufacture) == 0){
-    $manufactureerr = "Yêu cầu nhập hãng xe";
-}
-if(strlen($color) == 0){
-    $colorerr = "Yêu cầu nhập màu sắc";
-}
-if(strlen($model) == 0){
-    $modelerr = "Yêu cầu nhập model";
 }
 
 // check plate_number đã tồn tại hay chưa
@@ -44,15 +25,15 @@ if($plates == "" && count($plates) > 0){
 }
 
 
-if($plate_numbererr . $owner_iderr . $manufactureerr . $colorerr . $modelerr != "" ){
+if($plate_numbererr . $seat_bookedrr != "" ){
     header('location: ' . ADMIN_URL . "vehicles/add-form.php?plate_numbererr=$plate_numbererr&owner_iderr=$owner_iderr&manufactureerr=$manufactureerr&colorerr=$colorerr&modelerr=$modelerr");
     die;
 }
 
 $insertVehicleQuery = "insert into vehicles
-                          (plate_number, type_id, owner_id, manufacturer, color, model)
+                          (vehicletype_id, seat_booked, plate_number)
                     values
-                          ('$plate_number', '$type_id', '$owner_id', '$manufacture', '$color', '$model')";
+                          ('$vehicletype_id ', '$seat_booked','$plate_number')";
 
 queryExecute($insertVehicleQuery, false);
 // dd($insertVehicleQuery);

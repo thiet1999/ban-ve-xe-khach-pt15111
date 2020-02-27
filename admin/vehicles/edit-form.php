@@ -59,31 +59,15 @@ $users = queryExecute($getUsersQuery, true);
                             </div>
                             <div class="form-group">
                                 <label for="">Loại xe<span class="text-danger">*</span></label>
-                                <select name="type_id" class="form-control">
+                                <select name="vehicletype_id" class="form-control">
                                     <?php foreach ($vehicleTypes as $key => $type): ?>
-                                        <option <?php if($vehicleEdit['type_id']==$type['id']) echo 'selected' ?> value="<?php echo $type['id'] ?>"><?php echo $type['name'] ?></option>
+                                        <option <?php if($vehicleEdit['vehicletype_id']==$type['id']) echo 'selected' ?> value="<?php echo $type['id'] ?>"><?php echo $type['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">Mã người dùng<span class="text-danger">*</span></label>
-                                <select name="owner_id" class="form-control">
-                                    <?php foreach ($users as $key => $type): ?>
-                                        <option <?php if($vehicleEdit['owner_id'] === $type['id']) echo 'selected' ?> value="<?php echo $type['id'] ?>"><?php echo $type['name'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Hãng xe<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="manufacture" value="<?php echo $vehicleEdit['manufacturer'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Màu sắc<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="color" value="<?php echo $vehicleEdit['color'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Model<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="model" value="<?php echo $vehicleEdit['model'] ?>">
+                                <label for="">Số Ghế<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="seat_booked" value="<?php echo $vehicleEdit['seat_booked'] ?>">
                             </div>
                             <div class="col-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">Sửa</button>

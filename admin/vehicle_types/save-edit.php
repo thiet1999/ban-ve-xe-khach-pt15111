@@ -21,9 +21,9 @@ if($nameerr != "" ){
 }
 
 
-$updateVehicleTypeQuery = "update vehicle_types 
+$updateVehicleTypeQuery = "update vehicle_types
                     set
-                          name = '$name', 
+                          name = '$name',
                           status = '$status'
                     where id = $id";
 
