@@ -4,7 +4,7 @@ require_once '../../config/utils.php';
 checkAdminLoggedIn();
 
 # Lấy ra tất cả bản ghi trong bảng users
-$getAllMemberSql = "select * from users where role_id = 1";
+$getAllMemberSql = "select * from users";
 $users = queryExecute($getAllMemberSql, true);
 
 # Lấy ra tất cả các bản ghi trong bảng tickets
