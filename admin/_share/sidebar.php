@@ -117,7 +117,7 @@
                         <li class="nav-item">
                             <a href="<?= ADMIN_URL . 'routes/add-form.php' ?>" class="nav-link">
                                 <i class="fa fa-plus nav-icon"></i>
-                                <p>Thêm Đơn</p>
+                                <p>Thêm Quãng Đường</p>
                             </a>
                         </li>
                     </ul>

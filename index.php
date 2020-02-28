@@ -10,7 +10,7 @@ require_once './config/utils.php';
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Agency - HTML5 Booking template</title>
+    <title>Đặt vé xe - Trang chủ</title>
 
     <!-- Bootstrap -->
     <link href="<?= THEME_ASSET_URL ?>dist/css/bootstrap.css" rel="stylesheet" media="screen">
@@ -58,7 +58,7 @@ require_once './config/utils.php';
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="index-2.html" class="navbar-brand"><img src="<?= THEME_ASSET_URL ?>images/logo.png" alt="Travel Agency Logo" class="logo"/></a>
+                        <a href="index-2.html" class="navbar-brand"><img src="<?= BASE_URL ?>public/images/logo1.ico" alt="Travel Agency Logo" class="logo"/></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -70,7 +70,7 @@ require_once './config/utils.php';
 
 
                                 <li class="dropdown">
-                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Đăng nhập</a>
+                                    <a class="dropdown-toggle" href="login.php">Đăng nhập</a>
 
                                 </li>
                             </ul>
@@ -97,7 +97,7 @@ require_once './config/utils.php';
 
             <!-- FADE -->
             <li data-transition="fade" data-slotamount="1" data-masterspeed="300">
-                <img src="<?= THEME_ASSET_URL ?>images/slider/santorini.jpg" alt=""/>
+                <img src="<?= THEME_ASSET_URL ?>images/slider/1.png" alt=""/>
                 <div class="tp-caption scrolleffect sft"
                 data-x="center"
                 data-y="120"
@@ -111,7 +111,7 @@ require_once './config/utils.php';
 
         <!-- FADE -->
         <li data-transition="fade" data-slotamount="1" data-masterspeed="300">
-            <img src="<?= THEME_ASSET_URL ?>images/slider/rome.jpg" alt=""/>
+            <img src="<?= THEME_ASSET_URL ?>images/slider/2.png" alt=""/>
             <div class="tp-caption scrolleffect sft"
             data-x="center"
             data-y="120"
@@ -127,7 +127,7 @@ require_once './config/utils.php';
     <!-- FADE -->
     <li data-transition="fade" data-slotamount="1" data-masterspeed="300">
 
-        <img src="<?= THEME_ASSET_URL ?>images/slider/paris.jpg" alt=""/>
+        <img src="<?= THEME_ASSET_URL ?>images/slider/3.png" alt=""/>
         <div class="tp-caption scrolleffect sft"
         data-x="center"
         data-y="120"
