@@ -4,7 +4,7 @@ require_once '../../config/utils.php';
 checkAdminLoggedIn();
 
 # Lấy ra tất cả bản ghi trong bảng users
-$getAllMemberSql = "select * from users";
+$getAllMemberSql = "select * from users where role_id = 4";
 $users = queryExecute($getAllMemberSql, true);
 
 # Lấy ra tất cả các bản ghi trong bảng tickets
@@ -14,6 +14,10 @@ $tickets = queryExecute($getAllTicketSql, true);
 # Lấy ra tất cả các bản ghi trong bảng vehicles
 $getAllVehicleSql = "select * from vehicles";
 $vehicles = queryExecute($getAllVehicleSql, true);
+
+# Lấy ra tất cả các bản ghi trong bảng routes
+$getAllRoutesSql = "select * from routes";
+$routes = queryExecute($getAllRoutesSql, true);
 
 ?>
 <!DOCTYPE html>
@@ -98,6 +102,21 @@ $vehicles = queryExecute($getAllVehicleSql, true);
                                 <i class="fa fa-motorcycle"></i>
                             </div>
                             <a href="<?= ADMIN_URL . 'vehicles'?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3><?= count($routes)?></h3>
+
+                                <p>Quãng Đường</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-route"></i>
+                            </div>
+                            <a href="<?= ADMIN_URL . 'routes'?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>

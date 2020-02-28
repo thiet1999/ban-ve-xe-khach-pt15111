@@ -42,7 +42,7 @@ $routes = queryExecute($getRoutesQuery, true);
                 <!-- Small boxes (Stat box) -->
 
 
-                <form id="add-vehicle-form" action="<?= ADMIN_URL . 'routes/save-add.php' ?>" method="post"
+                <form id="add-route-form" action="<?= ADMIN_URL . 'routes/save-add.php' ?>" method="post"
                       enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
@@ -81,10 +81,10 @@ $routes = queryExecute($getRoutesQuery, true);
 </div>
 <!-- ./wrapper -->
 <?php include_once '../_share/script.php'; ?>
-<script>
-    $('#add-vehicle-form').validate({
+<!-- <script>
+    $('#add-route-form').validate({
         rules: {
-            plate_number: {
+            distance: {
                 required: true,
                 maxlength: 191,
                 remote: {
@@ -92,7 +92,7 @@ $routes = queryExecute($getRoutesQuery, true);
                     type: "post",
                     data: {
                         name: function () {
-                            return $( "input[name='plate_number']" ).val();
+                            return $( "input[name='distance']" ).val();
                         }
                     }
                 }
@@ -130,5 +130,5 @@ $routes = queryExecute($getRoutesQuery, true);
             },
         }
     });
-</script>
+</script> -->
 </body>
