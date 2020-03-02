@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php
+=======
+<?php 
+>>>>>>> 8ad8af4234f5a616a92d545eed0b6bcf9c58cda1
 // bắt đầu sử dụng session
 session_start();
 require_once "./config/utils.php";
@@ -18,12 +22,20 @@ require_once "./config/utils.php";
 		<div class="row">
 			<div class="col-4 offset-4">
                 <div class="login-logo">
+<<<<<<< HEAD
                     <a href="<?php echo BASE_URL ?>" >
                         <img src="<?php echo BASE_URL . 'public/images/logo1.ico'?>" alt="" class="">
                     </a>
                 </div>
 				<form action="post-login.php" method="post">
                     <!-- dùng để hiện message -->
+=======
+                    <a href="<?php echo BASE_URL ?>">
+                        <img src="<?php echo BASE_URL . 'public/images/logo1.png'?>" alt="" class="img-thumbnail">
+                    </a>
+                </div>
+				<form action="post-login.php" method="post">
+>>>>>>> 8ad8af4234f5a616a92d545eed0b6bcf9c58cda1
                     <div class="d-flex justify-content-center">
                         <?php if(isset($_GET['msg'])):?>
                         <span class="text-danger"><?php echo $_GET['msg']?></span>
@@ -43,7 +55,12 @@ require_once "./config/utils.php";
                     </div>
 				</form>
 			</div>
+<<<<<<< HEAD
 		</div>
+=======
+		</div>	
+		
+>>>>>>> 8ad8af4234f5a616a92d545eed0b6bcf9c58cda1
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

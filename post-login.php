@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php
+=======
+<?php 
+>>>>>>> 8ad8af4234f5a616a92d545eed0b6bcf9c58cda1
 session_start();
 require_once "./config/utils.php";
 $email = isset($_POST['email']) == true ? trim($_POST['email']) : "";
@@ -17,4 +21,8 @@ if(password_verify($password, $loggedInUser['password'])){
 
 
 
+<<<<<<< HEAD
 ?>
+=======
+ ?>
+>>>>>>> 8ad8af4234f5a616a92d545eed0b6bcf9c58cda1

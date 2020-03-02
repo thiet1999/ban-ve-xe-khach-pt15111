@@ -10,7 +10,11 @@ function loginUser($email, $password){
 	if(!$user){
 		return false;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 8ad8af4234f5a616a92d545eed0b6bcf9c58cda1
 	if(password_verify($password, $user['password'])){
 		return $user;
 	}
