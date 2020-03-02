@@ -1,16 +1,13 @@
 <?php
 require_once './config/utils.php';
-
-
 ?>
 <!DOCTYPE html>
 <html>
-
 <!-- Mirrored from titanicthemes.com/travel/blue/index6.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Feb 2020 09:36:52 GMT -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đặt vé xe - Trang chủ</title>
+    <title>Travel Agency - HTML5 Booking template</title>
 
     <!-- Bootstrap -->
     <link href="<?= THEME_ASSET_URL ?>dist/css/bootstrap.css" rel="stylesheet" media="screen">
@@ -18,10 +15,6 @@ require_once './config/utils.php';
 
     <!-- Carousel -->
     <link href="<?= THEME_ASSET_URL ?>examples/carousel/carousel.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="<?= THEME_ASSET_URL ?>assets/js/html5shiv.js"></script>
-    <script src="<?= THEME_ASSET_URL ?>assets/js/respond.min.js"></script>
 <![endif]-->
 
 <!-- Fonts -->
@@ -58,19 +51,19 @@ require_once './config/utils.php';
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="index-2.html" class="navbar-brand"><img src="<?= BASE_URL ?>public/images/logo1.ico" alt="Travel Agency Logo" class="logo"/></a>
+                        <a href="index-2.html" class="navbar-brand"><img src="<?= THEME_ASSET_URL ?>images/logo.png" alt="Travel Agency Logo" class="logo"/></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
 
                             <li class="dropdown">
-                                <a href="index.php">Trang chủ<span class="badge indent0"></a>
+                                <a href="<?php echo BASE_URL?>">Trang chủ<span class="badge indent0"></a>
 
                                 </li>
 
 
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" href="login.php">Đăng nhập</a>
+                                    <a  class="dropdown-toggle" href="login.php">Đăng nhập</a>
 
                                 </li>
                             </ul>
@@ -97,7 +90,7 @@ require_once './config/utils.php';
 
             <!-- FADE -->
             <li data-transition="fade" data-slotamount="1" data-masterspeed="300">
-                <img src="<?= THEME_ASSET_URL ?>images/slider/1.png" alt=""/>
+                <img src="<?= THEME_ASSET_URL ?>images/slider/santorini.jpg" alt=""/>
                 <div class="tp-caption scrolleffect sft"
                 data-x="center"
                 data-y="120"
@@ -111,7 +104,7 @@ require_once './config/utils.php';
 
         <!-- FADE -->
         <li data-transition="fade" data-slotamount="1" data-masterspeed="300">
-            <img src="<?= THEME_ASSET_URL ?>images/slider/2.png" alt=""/>
+            <img src="<?= THEME_ASSET_URL ?>images/slider/rome.jpg" alt=""/>
             <div class="tp-caption scrolleffect sft"
             data-x="center"
             data-y="120"
@@ -127,7 +120,7 @@ require_once './config/utils.php';
     <!-- FADE -->
     <li data-transition="fade" data-slotamount="1" data-masterspeed="300">
 
-        <img src="<?= THEME_ASSET_URL ?>images/slider/3.png" alt=""/>
+        <img src="<?= THEME_ASSET_URL ?>images/slider/paris.jpg" alt=""/>
         <div class="tp-caption scrolleffect sft"
         data-x="center"
         data-y="120"
@@ -240,7 +233,7 @@ require_once './config/utils.php';
 
                     <div class="tab-content3" id="myTabContent">
                         <div id="air" class="tab-pane fade active in">
-
+<form action="<?php echo CART_URL ?>" method="post">
                             <div class="w50percent">
                                 <div class="wh90percent textleft">
                                     <span class="opensans size13"><b>Điểm đi</b></span>
@@ -332,11 +325,9 @@ require_once './config/utils.php';
                     </div>
 
                     <div class="searchbg">
-                        <form action="http://titanicthemes.com/travel/blue/list4.html">
                             <button type="submit" class="btn-search">Search</button>
-                        </form>
                     </div>
-
+</form>
                 </div>
             </div>
             <div class="col-md-2 col-md-push-8"></div>

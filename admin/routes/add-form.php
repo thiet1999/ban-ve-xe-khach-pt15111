@@ -6,6 +6,7 @@ checkAdminLoggedIn();
 // danh sách routes
 $getRoutesQuery = "select * from routes";
 $routes = queryExecute($getRoutesQuery, true);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,7 +43,7 @@ $routes = queryExecute($getRoutesQuery, true);
                 <!-- Small boxes (Stat box) -->
 
 
-                <form id="add-route-form" action="<?= ADMIN_URL . 'routes/save-add.php' ?>" method="post"
+                <form id="add-vehicle-form" action="<?= ADMIN_URL . 'routes/save-add.php' ?>" method="post"
                       enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
@@ -60,7 +61,7 @@ $routes = queryExecute($getRoutesQuery, true);
                             </div>
                             <div class="form-group">
                                 <label for="">Điểm cuối<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="end_point">
+                                <input type="text" class="form-control" name="end">
                             </div>
                             <div class="col-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">Thêm</button>
@@ -81,10 +82,10 @@ $routes = queryExecute($getRoutesQuery, true);
 </div>
 <!-- ./wrapper -->
 <?php include_once '../_share/script.php'; ?>
-<!-- <script>
-    $('#add-route-form').validate({
+<script>
+    $('#add-vehicle-form').validate({
         rules: {
-            distance: {
+            plate_number: {
                 required: true,
                 maxlength: 191,
                 remote: {
@@ -92,7 +93,7 @@ $routes = queryExecute($getRoutesQuery, true);
                     type: "post",
                     data: {
                         name: function () {
-                            return $( "input[name='distance']" ).val();
+                            return $( "input[name='plate_number']" ).val();
                         }
                     }
                 }
@@ -130,5 +131,5 @@ $routes = queryExecute($getRoutesQuery, true);
             },
         }
     });
-</script> -->
+</script>
 </body>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2020 at 12:09 PM
+-- Generation Time: Feb 28, 2020 at 02:58 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -79,7 +79,7 @@ INSERT INTO `roles` (`id`, `name`, `status`) VALUES
 CREATE TABLE `routes` (
   `id` int(11) NOT NULL,
   `distance` varchar(255) NOT NULL,
-  `estimate_time` text NOT NULL DEFAULT 'current_timestamp(6)',
+  `estimate_time` varchar(255) NOT NULL,
   `begin_point` varchar(255) NOT NULL,
   `end_point` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -89,7 +89,8 @@ CREATE TABLE `routes` (
 --
 
 INSERT INTO `routes` (`id`, `distance`, `estimate_time`, `begin_point`, `end_point`) VALUES
-(0, '180km', '03:40', 'Bx Mỹ Đình', '');
+(1, '200km', '2h:00', 'A', 'B'),
+(4, '180km', '04:00', 'Hà Nội', 'Nam Định');
 
 -- --------------------------------------------------------
 
@@ -148,7 +149,9 @@ CREATE TABLE `vehicles` (
 --
 
 INSERT INTO `vehicles` (`id`, `vehicletype_id`, `seat_booked`, `plate_number`) VALUES
-(1, 1, '30', '29T9-999.99');
+(1, 1, '30', '29T9-999.99'),
+(3, 1, '9', 't31'),
+(4, 2, '5', 't32');
 
 -- --------------------------------------------------------
 
@@ -233,6 +236,12 @@ ALTER TABLE `vehicle_types`
 --
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
@@ -243,6 +252,12 @@ ALTER TABLE `order_detail`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `routes`
+--
+ALTER TABLE `routes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tickets`
@@ -260,7 +275,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `vehicle_types`
@@ -289,8 +304,7 @@ ALTER TABLE `order_detail`
 -- Constraints for table `tickets`
 --
 ALTER TABLE `tickets`
-  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`),
-  ADD CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`route_id`) REFERENCES `routes` (`id`);
+  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`);
 
 --
 -- Constraints for table `users`
