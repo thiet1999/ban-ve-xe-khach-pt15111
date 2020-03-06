@@ -46,7 +46,7 @@ $routes = queryExecute($getRoutesQuery, true);
                         <li class="nav-item">
                             <a class="nav-link" href="#">Thông tin</a>
                         </li>
-                        <?php if ($loggedInUser !== null && $loggedInUser['role_id'] < 5) : ?>
+                        <?php if ($loggedInUser !== null && $loggedInUser['role_id'] < 2) : ?>
                             <li class="nav-item" style="display: none">
                                 <a class="nav-link" href="<?php echo ADMIN_URL . 'dashboard' ?>">Quản lý Trang Web</a>
                             </li>
@@ -205,11 +205,16 @@ $routes = queryExecute($getRoutesQuery, true);
             </div>
         </div>
         <!--END CONTACT - START FOOTER-->
-        <footer>
-            <div class="container pt-2 text-center">
-                <p>Công ty Company</p>
-                <p>Địa chỉ: Lầu 8,9, Tòa nhà CirCO, 222 Điện Biên Phủ, Quận 3, TP. Hồ Chí Minh, Việt Nam</p>
+        <footer> 
+        <div class="footerbg3">
+        <div class="container center grey">
+            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 3.0.2
             </div>
+        </div>
+    </div>
         </footer>
 
         <!-- jquery -->
