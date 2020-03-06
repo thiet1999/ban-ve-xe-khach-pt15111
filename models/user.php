@@ -10,7 +10,7 @@ function loginUser($email, $password){
 	if(!$user){
 		return false;
 	}
-	
+
 	if(password_verify($password, $user['password'])){
 		return $user;
 	}

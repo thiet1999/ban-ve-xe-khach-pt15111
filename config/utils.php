@@ -1,27 +1,41 @@
 <?php
+
+# Quy định constants
 define('BASE_URL', 'http://localhost/ban-ve-xe-khach-pt15111/');
 define('ADMIN_URL', BASE_URL . 'admin/');
+define('CART_URL', BASE_URL . 'shopping_cart/');
 define('PUBLIC_URL', BASE_URL . 'public/');
-define('DEFAULT_IMAGE', PUBLIC_URL . '/images/default-image.jpg');
+define('ADMIN_ASSET_URL', PUBLIC_URL . 'admin/');
+
+define('THEME_ASSET_URL', PUBLIC_URL . 'blue/');
+
+define('DEFAULT_IMAGE', PUBLIC_URL . 'images/default-image.jpg');
 define('AUTH', 'AUTH_SESSION');
 define("ACTIVE", 1);
 define("INACTIVE", -1);
 
-function getdbConn() {
-    try {
-        $host = "localhost";
-        $dbname = "ban-ve-xe-khach-pt15111";
-        $dbusername = "root";
-        $dbpass = "";
+# Các hàm sử dụng chung
+# Trả về kết nối đến csdl
+function getdbConn(){
+	try{
+		$host = "127.0.0.1";
+		$dbname = "ban-ve-xe";
+		$dbusername = "root";
+		$dbpass = "";
 
-        $connect = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $dbusername, $dbpass);
-        return $connect;
-    } catch (Exception $ex) {
-        var_dump($ex->getMessage());
-        die;
-    }
+		$connect = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $dbusername, $dbpass);
+		return $connect;
+	}catch(Exception $ex){
+		var_dump($ex->getMessage());
+		die;
+	}
 }
 
+# Thực thi 1 câu lệnh sql được dựng sẵn
+# @ts1: $sql - câu lệnh cần đc thực thi
+# @ts2: $fetchAll - (true/false)
+# true: lấy hết tất cả các kết quả trả về của câu sql
+# false: trả về kết quả đầu tiên tìm đc của câu sql
 function queryExecute($sql, $fetchAll = false){
 
     $conn = getdbConn();
@@ -44,8 +58,8 @@ function checkAdminLoggedIn(){
         die;
     }
     // 2 - giá trị của cột role_id = 2
-    if($_SESSION[AUTH]['role_id'] >= 2){
-        header('location: ' . BASE_URL . 'login.php?msg=Bạn không có quyền truy cập');
+    if($_SESSION[AUTH]['role_id'] < 2){
+        header('location: ' . BASE_URL . 'login.php?msg=You\'re not admin, tell me who you are? ');
         die;
     }
 }
@@ -55,6 +69,4 @@ function dd($data){
 	var_dump($data);
 	die;
 }
-
-
 ?>

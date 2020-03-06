@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once "./config/utils.php";
 $email = isset($_POST['email']) == true ? trim($_POST['email']) : "";
@@ -8,13 +8,10 @@ $sql = "select * from users where email = '$email'";
 $loggedInUser = queryExecute($sql, false);
 if(password_verify($password, $loggedInUser['password'])){
     $_SESSION[AUTH] = $loggedInUser;
-    header('location: admin/users/index.php');
+    header('location: index.php');
     die;
 }else{
     header('location: login.php?msg=Sai thông tin đăng nhập!');
     die;
 }
-
-
-
  ?>
