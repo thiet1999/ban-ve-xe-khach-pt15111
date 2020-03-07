@@ -2,8 +2,14 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-$getRoleQuery = "select * from roles where status = 1";
-$roles = queryExecute($getRoleQuery, true);
+
+// lấy dữ liệu từ routes
+$getRoutesQuery = "select * from routes";
+$routes = queryExecute($getRoutesQuery, true);
+// lấy dữ liệu từ vehicles
+$getVehiclesQuery = "select * from vehicles";
+$vehicles = queryExecute($getVehiclesQuery, true);
+
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +36,7 @@ $roles = queryExecute($getRoleQuery, true);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Tạo tài khoản</h1>
+                            <h1 class="m-0 text-dark">Thêm Lịch Trình</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -41,56 +47,50 @@ $roles = queryExecute($getRoleQuery, true);
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="add-user-form" action="<?= ADMIN_URL . 'users/save-add.php' ?>" method="post" enctype="multipart/form-data">
+                    <form id="add-user-form" action="<?= ADMIN_URL . 'schedules/save-add.php' ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Tên người dùng<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name">
-                                    <?php if (isset($_GET['nameerr'])) : ?>
-                                        <label class="error"><?= $_GET['nameerr'] ?></label>
-                                    <?php endif; ?>
+                                    <label for="">Điểm đầu<span class="text-danger">*</span></label>
+                                    <select name="route_id" class="form-control">
+                                        <?php foreach ($routes as $route) : ?>
+                                            <option value="<?php echo $route['id'] ?>"><?php echo $route['begin_point'] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
                                 </div>
+                                <!-- <div class="form-group">
+                                    <label for="">Điểm cuối<span class="text-danger">*</span></label>
+                                    <select name="route_id" class="form-control">
+                                        <?php foreach ($routes as $route) : ?>
+                                            <option value="<?php echo $route['id'] ?>"><?php echo $route['end_point'] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div> -->
                                 <div class="form-group">
-                                    <label for="">Email<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="email">
-                                    <?php if (isset($_GET['emailerr'])) : ?>
-                                        <label class="error"><?= $_GET['emailerr'] ?></label>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Mật khẩu<span class="text-danger">*</span></label>
-                                    <input type="password" id="main-password" class="form-control" name="password">
-                                    <?php if (isset($_GET['passworderr'])) : ?>
-                                        <label class="error"><?= $_GET['passworderr'] ?></label>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Nhập lại mật khẩu<span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" name="cfpassword">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Quyền</label>
-                                    <select name="role_id" class="form-control">
-                                        <?php foreach ($roles as $ro) : ?>
-                                            <option value="<?= $ro['id'] ?>"><?= $ro['name'] ?></option>
+                                    <label for="">Biển số xe<span class="text-danger">*</span></label>
+                                    <select name="vehicle_id" class="form-control">
+                                        <?php foreach ($vehicles as $vehicle) : ?>
+                                            <option value="<?php echo $vehicle['id'] ?>"><?php echo $vehicle['plate_number'] ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-6 offset-md-3">
-                                        <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid">
-                                    </div>
+                            <div class="form-group">
+                                    <label for="">Giá tiền<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" name="price">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Số điện thoại</label>
-                                    <input type="text" class="form-control" name="phone_number">
+                                    <label for="">Thời gian bắt đầu<span class="text-danger">*</span></label>
+                                    <input type="datetime" class="form-control" name="start_time">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Thời gian kết thúc<span class="text-danger">*</span></label>
+                                    <input type="datetime" class="form-control" name="end_time">
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
+                                    <a href="<?= ADMIN_URL . 'schedules' ?>" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>
                         </div>

@@ -6,33 +6,23 @@ checkAdminLoggedIn();
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 $roleId = isset($_GET['role']) == true ? $_GET['role'] : false;
 
-// Lấy danh sách roles
-// $getRolesQuery = "select * from roles where status = 1";
-$getRolesQuery = "select * from roles";
-$roles = queryExecute($getRolesQuery, true);
-
-// danh sách users
-$getUsersQuery = "select
-                    u.*,
-                    r.name as role_name
-                    from users u
-                    join roles r
-                    on u.role_id = r.id";
+$getSchedulesQuery = "select rs.*,
+                            r.begin_point as begin,
+                            r.end_point as end,
+                            v.id
+                        from routes r join route_schedules rs on rs.route_id = r.id
+                        join vehicles v on rs.vehicle_id = v.id
+                        ";
 // tìm kiếm
 if ($keyword !== "") {
-    $getUsersQuery .= " where (u.email like '%$keyword%'
-                            or u.phone_number like '%$keyword%'
-                            or u.name like '%$keyword%')
+    $getSchedulesQuery .= " where (rs.route_id like '%$keyword%'
+                            or rs.vehicle_id like '%$keyword%'
+                            or rs.price like '%$keyword%'
+                            or rs.start_time like '%$keyword%'
+                            or rs.end_time like '%$keyword%')
                       ";
-    if ($roleId !== false && $roleId !== "") {
-        $getUsersQuery .= " and u.role_id = $roleId";
-    }
-} else {
-    if ($roleId !== false && $roleId !== "") {
-        $getUsersQuery .= " where u.role_id = $roleId";
-    }
 }
-$users = queryExecute($getUsersQuery, true);
+$schedules = queryExecute($getSchedulesQuery, true);
 
 ?>
 <!DOCTYPE html>
@@ -64,7 +54,7 @@ $users = queryExecute($getUsersQuery, true);
                         <!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL . 'dashboard'?>">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL . 'dashboard' ?>">Dashboard</a></li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -114,39 +104,33 @@ $users = queryExecute($getUsersQuery, true);
                         <table class="table table-stripped">
                             <thead>
                                 <th>ID</th>
-                                <th>Tên</th>
-                                <th>Email</th>
-                                <th>Loại tài khoản</th>
-                                <th width="100">Ảnh</th>
-                                <th>Số ĐT</th>
+                                <th>Tuyến đường</th>
+                                <th>Xe</th>
+                                <th>Giá tiền</th>
+                                <th>Thời gian bắt đầu</th>
+                                <th>Thời gian kết thúc</th>
                                 <th>
-                                    <a href="<?php echo ADMIN_URL . 'users/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
+                                    <a href="<?php echo ADMIN_URL . 'schedules/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                 </th>
                             </thead>
                             <tbody>
-                                <?php foreach ($users as $us) : ?>
+                                <?php foreach ($schedules as $schedule) : ?>
                                     <tr>
-                                        <td><?php echo $us['id'] ?></td>
-                                        <td><?php echo $us['name'] ?></td>
-                                        <td><?php echo $us['email'] ?></td>
+                                        <td><?php echo $schedule['id'] ?></td>
+                                        <td><?php echo $schedule['route_id'] ?></td>
+                                        <td><?php echo $schedule['vehicle_id'] ?></td>
                                         <td>
-                                            <?php echo $us['role_name'] ?>
+                                            <?php echo $schedule['price'] ?>
                                         </td>
+                                        <td><?php echo $schedule['start_time'] ?></td>
+                                        <td><?php echo $schedule['end_time'] ?></td>
                                         <td>
-                                            <img class="img-fluid" src="<?= PUBLIC_URL . 'images/default-image.jpg' ?>" alt="">
-                                        </td>
-                                        <td><?php echo $us['phone_number'] ?></td>
-                                        <td>
-                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id'] || $us['id'] === $_SESSION[AUTH]['id']) : ?>
-                                                <a href="<?php echo ADMIN_URL . 'users/edit-form.php?id=' . $us['id'] ?>" class="btn btn-sm btn-info">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                            <?php endif; ?>
-                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>
-                                                <a href="<?php echo ADMIN_URL . 'users/remove.php?id=' . $us['id'] ?>" class="btn-remove btn btn-sm btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                            <?php endif; ?>
+                                            <a href="<?php echo ADMIN_URL . 'schedules/edit-form.php?id=' . $schedule['id'] ?>" class="btn btn-sm btn-info">
+                                                <i class="fa fa-pencil-alt"></i>
+                                            </a>
+                                            <a href="<?php echo ADMIN_URL . 'schedules/remove.php?id=' . $schedule['id'] ?>" class="btn-remove btn btn-sm btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
