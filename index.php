@@ -63,7 +63,6 @@ $routes = queryExecute($getRoutesQuery, true);
                                     <a class="dropdown-item" href="#">Thông tin cá nhân</a>
                                     <a class="dropdown-item" href="#">Đổi mật khẩu</a>
                                     <a class="dropdown-item" href="#">Thông tin vé xe</a>
-                                    <a class="dropdown-item" href="<?php echo ADMIN_URL . 'users/' ?>">Quản lý</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="<?php echo BASE_URL . './logout.php' ?>">Đăng xuất</a>
                                 </div>
@@ -205,16 +204,11 @@ $routes = queryExecute($getRoutesQuery, true);
             </div>
         </div>
         <!--END CONTACT - START FOOTER-->
-        <footer> 
-        <div class="footerbg3">
-        <div class="container center grey">
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.0.2
+        <footer>
+            <div class="container pt-2 text-center">
+                <p>Công ty Company</p>
+                <p>Địa chỉ: Lầu 8,9, Tòa nhà CirCO, 222 Điện Biên Phủ, Quận 3, TP. Hồ Chí Minh, Việt Nam</p>
             </div>
-        </div>
-    </div>
         </footer>
 
         <!-- jquery -->

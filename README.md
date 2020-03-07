@@ -1,2 +1,5 @@
 # ban-ve-xe-khach-pt15111
-# du an do nom lop pt15111-web thuc hien
+# Dự án mẫu do
+# Nguyễn Hồng Quân- ph09166
+# Đồ Hồng Sơn
+# Chu Văn Thiết
