@@ -28,8 +28,7 @@ $updateSchedulesQuery = "update route_schedules
                           price = '$price', 
                           start_time = '$start_time', 
                           end_time = '$end_time' 
-                    where id = '$id'";
+                    where id = $id";
 queryExecute($updateSchedulesQuery, false);
-dd($updateSchedulesQuery);
 header("location: " . ADMIN_URL . "schedules");
 die;

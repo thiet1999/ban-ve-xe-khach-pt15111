@@ -62,19 +62,17 @@ if (!$schedules) {
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="edit-user-form" action="<?= ADMIN_URL . 'schedules/save-edit.php' ?>" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                    <form id="edit-user-form" action="<?= ADMIN_URL . 'schedules/save-edit.php' ?>" method="post"
+                        enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="<?= $schedules['id'] ?>">
                         <div class="row">
                             <div class="col-md-6">
-                            <div class="form-group">
-                                    <label for="">ID<span class="text-danger">*</span></label>
-                                    <input type="text" value="<?php echo $id?>" name="id" disabled>
-                                </div>
                                 <div class="form-group">
                                     <label for="">Tuyến đường<span class="text-danger">*</span></label>
                                     <select name="route_id" class="form-control">
                                         <?php foreach ($routes as $route) : ?>
-                                            <option value="<?php echo $route['id'] ?>"><?php echo $route['begin_point'] . "  -  " . $route['end_point'] ?></option>
+                                        <option value="<?php echo $route['id'] ?>">
+                                            <?php echo $route['begin_point'] . "  -  " . $route['end_point'] ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -82,7 +80,8 @@ if (!$schedules) {
                                     <label for="">Biển số xe<span class="text-danger">*</span></label>
                                     <select name="vehicle_id" class="form-control">
                                         <?php foreach ($vehicles as $vehicle) : ?>
-                                            <option value="<?php echo $vehicle['id'] ?>"><?php echo $vehicle['plate_number'] ?></option>
+                                        <option value="<?php echo $vehicle['id'] ?>">
+                                            <?php echo $vehicle['plate_number'] ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -90,15 +89,18 @@ if (!$schedules) {
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Giá tiền<span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" name="price" min="0" value="<?php echo $schedules['price'] ?>">
+                                    <input type="number" class="form-control" name="price" min="0"
+                                        value="<?php echo $schedules['price'] ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Thời gian bắt đầu<span class="text-danger">*</span></label>
-                                    <input type="datetime" class="form-control" name="start_time" value=" <?php echo $schedules['start_time'] ?>">
+                                    <input type="datetime" class="form-control" name="start_time"
+                                        value=" <?php echo $schedules['start_time'] ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Thời gian kết thúc<span class="text-danger">*</span></label>
-                                    <input type="datetime" class="form-control" name="end_time" value=" <?php echo $schedules['end_time'] ?>">
+                                    <input type="datetime" class="form-control" name="end_time"
+                                        value=" <?php echo $schedules['end_time'] ?>">
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Sửa</button>&nbsp;
@@ -121,73 +123,73 @@ if (!$schedules) {
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
-        function encodeImageFileAsURL(element) {
-            var file = element.files[0];
-            if (file === undefined) {
-                $('#preview-img').attr('src', "<?= BASE_URL . $user['avatar'] ?>");
-                return false;
-            }
-            var reader = new FileReader();
-            reader.onloadend = function() {
-                $('#preview-img').attr('src', reader.result)
-            }
-            reader.readAsDataURL(file);
+    function encodeImageFileAsURL(element) {
+        var file = element.files[0];
+        if (file === undefined) {
+            $('#preview-img').attr('src', "<?= BASE_URL . $user['avatar'] ?>");
+            return false;
         }
-        $('#edit-user-form').validate({
-            rules: {
-                name: {
-                    required: true,
-                    maxlength: 191
-                },
-                email: {
-                    required: true,
-                    maxlength: 191,
-                    email: true,
-                    remote: {
-                        url: "<?= ADMIN_URL . 'users/verify-email-existed.php' ?>",
-                        type: "post",
-                        data: {
-                            email: function() {
-                                return $("input[name='email']").val();
-                            },
-                            id: <?= $user['id']; ?>
-                        }
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            $('#preview-img').attr('src', reader.result)
+        }
+        reader.readAsDataURL(file);
+    }
+    $('#edit-user-form').validate({
+        rules: {
+            name: {
+                required: true,
+                maxlength: 191
+            },
+            email: {
+                required: true,
+                maxlength: 191,
+                email: true,
+                remote: {
+                    url: "<?= ADMIN_URL . 'users/verify-email-existed.php' ?>",
+                    type: "post",
+                    data: {
+                        email: function() {
+                            return $("input[name='email']").val();
+                        },
+                        id: < ? = $user['id']; ? >
                     }
-                },
-                phone_number: {
-                    number: true
-                },
-                house_no: {
-                    maxlength: 191
-                },
-                avatar: {
-                    extension: "png|jpg|jpeg|gif"
                 }
             },
-            messages: {
-                name: {
-                    required: "Hãy nhập tên người dùng",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                email: {
-                    required: "Hãy nhập email",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-                    email: "Không đúng định dạng email",
-                    remote: "Email đã tồn tại, vui lòng sử dụng email khác"
-                },
-                phone_number: {
-                    min: "Bắt buộc là số có 10 chữ số",
-                    max: "Bắt buộc là số có 10 chữ số",
-                    number: "Nhập định dạng số"
-                },
-                house_no: {
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                avatar: {
-                    extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
-                }
+            phone_number: {
+                number: true
+            },
+            house_no: {
+                maxlength: 191
+            },
+            avatar: {
+                extension: "png|jpg|jpeg|gif"
             }
-        });
+        },
+        messages: {
+            name: {
+                required: "Hãy nhập tên người dùng",
+                maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+            },
+            email: {
+                required: "Hãy nhập email",
+                maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
+                email: "Không đúng định dạng email",
+                remote: "Email đã tồn tại, vui lòng sử dụng email khác"
+            },
+            phone_number: {
+                min: "Bắt buộc là số có 10 chữ số",
+                max: "Bắt buộc là số có 10 chữ số",
+                number: "Nhập định dạng số"
+            },
+            house_no: {
+                maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+            },
+            avatar: {
+                extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
+            }
+        }
+    });
     </script>
 </body>
 
