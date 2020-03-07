@@ -8,7 +8,10 @@ $loggedInUser = $_SESSION[AUTH];
 $getRoutesQuery = "select * from routes";
 $routes = queryExecute($getRoutesQuery, true);
 
+$getSchedulesQuery = "select * from route_schedules";
+$Schedules = queryExecute($getSchedulesQuery, true);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,52 +79,7 @@ $routes = queryExecute($getRoutesQuery, true);
     <section class="info-basket pt-4">
         <h2 class="h3 text-center">Danh sách vé đã đặt</h2>
         <div class="container">
-            <table class="table table-striped table-hover table-inverse table-responsive">
-                <thead class="thead-inverse">
-                    <tr>
-                        <th style="width: 10%">Mã vé</th>
-                        <th style="width: 20%">Xe</th>
-                        <th style="width: 20%">Ngày đặt</th>
-                        <th style="width: 40%">Tuyến đường</th>
-                        <th style="width: 20%">Số ghế</th>
-                        <th style="width: 20%">Giá</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">1</td>
-                        <td>Bus 29</td>
-                        <td>24/12/2020</td>
-                        <td>Nam Định - Hà Nội</td>
-                        <td>10</td>
-                        <td>100.000 VND</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">1</td>
-                        <td>Bus 29</td>
-                        <td>24/12/2020</td>
-                        <td>Nam Định - Hà Nội</td>
-                        <td>10</td>
-                        <td>100.000 VND</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">1</td>
-                        <td>Bus 29</td>
-                        <td>24/12/2020</td>
-                        <td>Nam Định - Hà Nội</td>
-                        <td>10</td>
-                        <td>100.000 VND</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">1</td>
-                        <td>Bus 29</td>
-                        <td>24/12/2020</td>
-                        <td>Nam Định - Hà Nội</td>
-                        <td>10</td>
-                        <td>100.000 VND</td>
-                    </tr>
-                </tbody>
-            </table>
+           <?php  ?>
         </div>
     </section>
     <footer>

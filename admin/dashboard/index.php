@@ -154,7 +154,7 @@ $schedule = queryExecute($getAllScheduleSql, true);
                                 <div class="icon">
                                     <i class="fa fa-list-alt"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'schedule' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'schedules/' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

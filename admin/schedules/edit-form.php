@@ -9,11 +9,17 @@ $roles = queryExecute($getRoleQuery, true);
 $getSchedules = "select * from route_shedules";
 $schedules = queryExecute($getSchedules, true);
 
+$getRoutes = "select * from routes";
+$routes = queryExecute($getRoutes, true);
+
+$getVehicles = "select * from vehicles";
+$vehicles = queryExecute($getVehicles, true);
+
 // lấy thông tin của người dùng ra ngoài thông id trên đường dẫn
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
 // kiem tra su ton tai cua lich trinh
 $getSchedulesByIdQuery = "select * from route_schedules where id = $id";
-$schedules = queryExecute($getSchedulesByIdQuery, fasle);
+$schedules = queryExecute($getSchedulesByIdQuery, false);
 if (!$schedules) {
     header("location: " . ADMIN_URL . 'schedules?msg=Lịch trình không tồn tại');
     die;
@@ -60,11 +66,15 @@ if (!$schedules) {
                         <input type="hidden" name="id" value="<?= $user['id'] ?>">
                         <div class="row">
                             <div class="col-md-6">
+                            <div class="form-group">
+                                    <label for="">ID<span class="text-danger">*</span></label>
+                                    <input type="text" value="<?php echo $id?>" name="id" disabled>
+                                </div>
                                 <div class="form-group">
                                     <label for="">Tuyến đường<span class="text-danger">*</span></label>
                                     <select name="route_id" class="form-control">
                                         <?php foreach ($routes as $route) : ?>
-                                            <option value="<?php echo $route['id'] ?>"><?php echo $route['begin_point']."  -  ".$route['begin_point'] ?></option>
+                                            <option value="<?php echo $route['id'] ?>"><?php echo $route['begin_point'] . "  -  " . $route['end_point'] ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -78,20 +88,20 @@ if (!$schedules) {
                                 </div>
                             </div>
                             <div class="col-md-6">
-                            <div class="form-group">
+                                <div class="form-group">
                                     <label for="">Giá tiền<span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" name="price" min="0"
+                                    <input type="number" class="form-control" name="price" min="0" value="<?php echo $schedules['price'] ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Thời gian bắt đầu<span class="text-danger">*</span></label>
-                                    <input type="datetime" class="form-control" name="start_time">
+                                    <input type="datetime" class="form-control" name="start_time" value=" <?php echo $schedules['start_time'] ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Thời gian kết thúc<span class="text-danger">*</span></label>
-                                    <input type="datetime" class="form-control" name="end_time">
+                                    <input type="datetime" class="form-control" name="end_time" value=" <?php echo $schedules['end_time'] ?>">
                                 </div>
                                 <div class="col d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                                    <button type="submit" class="btn btn-primary">Sửa</button>&nbsp;
                                     <a href="<?= ADMIN_URL . 'schedules' ?>" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>
