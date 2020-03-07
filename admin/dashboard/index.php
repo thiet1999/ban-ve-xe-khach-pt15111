@@ -7,10 +7,6 @@ checkAdminLoggedIn();
 $getAllMemberSql = "select * from users where role_id = 1";
 $users = queryExecute($getAllMemberSql, true);
 
-# Lấy ra tất cả các bản ghi trong bảng tickets
-$getAllTicketSql = "select * from tickets";
-$tickets = queryExecute($getAllTicketSql, true);
-
 # Lấy ra tất cả các bản ghi trong bảng vehicles
 $getAllVehicleSql = "select * from vehicles";
 $vehicles = queryExecute($getAllVehicleSql, true);
@@ -24,8 +20,8 @@ $getAllRoutesSql = "select * from routes";
 $routes = queryExecute($getAllRoutesSql, true);
 
 # Lấy ra tất cả các bản ghi trong bảng shedules
-$getAllScheduleSql = "select * from route_shedule";
-$schedule = queryExecute($getAllScheduleSql, true);
+$getAllSchedulesSql = "select * from route_schedules";
+$schedules = queryExecute($getAllSchedulesSql, true);
 
 ?>
 <!DOCTYPE html>
@@ -86,20 +82,6 @@ $schedule = queryExecute($getAllScheduleSql, true);
                         <!-- ./col -->
                         <div class="col-lg-4 col-6">
                             <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3><?= count($tickets) ?></h3>
-                                    <p>Vé</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-ticket-alt"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'tickets' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-4 col-6">
-                            <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h3><?= count($vehicles) ?></h3>
@@ -109,6 +91,20 @@ $schedule = queryExecute($getAllScheduleSql, true);
                                     <i class="fa fa-motorcycle"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'vehicles' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-4 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-secondary">
+                                <div class="inner">
+                                    <h3><?= count($schedules) ?></h3>
+                                    <p>Lịch trình</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-list-alt"></i>
+                                </div>
+                                <a href="<?= ADMIN_URL . 'schedules/' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -141,20 +137,6 @@ $schedule = queryExecute($getAllScheduleSql, true);
                                     <i class="fa fa-route"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'routes' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-4 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3><?= count($schedule) ?></h3>
-                                    <p>Lịch trình</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-list-alt"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'schedules/' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
