@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2020 at 03:12 AM
+-- Generation Time: Mar 07, 2020 at 08:16 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -79,10 +79,17 @@ INSERT INTO `roles` (`id`, `name`, `status`) VALUES
 CREATE TABLE `routes` (
   `id` int(11) NOT NULL,
   `distance` varchar(255) NOT NULL,
-  `estimate_time` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `estimate_time` time(6) NOT NULL,
   `begin_point` varchar(255) NOT NULL,
   `end_point` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `routes`
+--
+
+INSERT INTO `routes` (`id`, `distance`, `estimate_time`, `begin_point`, `end_point`) VALUES
+(1, '200km', '04:00:00.000000', 'Mỹ Đình', 'Nam Định');
 
 -- --------------------------------------------------------
 
@@ -98,6 +105,15 @@ CREATE TABLE `route_schedules` (
   `start_time` datetime(6) NOT NULL,
   `end_time` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `route_schedules`
+--
+
+INSERT INTO `route_schedules` (`id`, `route_id`, `vehicle_id`, `price`, `start_time`, `end_time`) VALUES
+(6, 1, 1, '150000', '2020-02-02 12:00:00.000000', '2020-02-02 12:00:00.000000'),
+(7, 1, 1, '150000', '2020-02-02 12:00:00.000000', '2020-02-02 12:00:00.000000'),
+(8, 1, 1, '120000', '2020-02-02 06:00:00.000000', '2020-02-02 06:00:00.000000');
 
 -- --------------------------------------------------------
 
@@ -136,6 +152,15 @@ CREATE TABLE `vehicles` (
   `plate_number` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `vehicles`
+--
+
+INSERT INTO `vehicles` (`id`, `type_id`, `seat`, `plate_number`) VALUES
+(1, 1, 30, '29T9-999.99'),
+(6, 1, 16, '18H1-888.88'),
+(7, 2, 16, '29G9-666.66');
+
 -- --------------------------------------------------------
 
 --
@@ -153,7 +178,8 @@ CREATE TABLE `vehicle_types` (
 --
 
 INSERT INTO `vehicle_types` (`id`, `name`, `status`) VALUES
-(1, 'Xe Bus 2 tầng', 0);
+(1, 'Xe Bus 2 tầng', 0),
+(2, 'Xe Limousine', 0);
 
 --
 -- Indexes for dumped tables
@@ -240,13 +266,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `routes`
 --
 ALTER TABLE `routes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `route_schedules`
 --
 ALTER TABLE `route_schedules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -258,13 +284,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `vehicle_types`
 --
 ALTER TABLE `vehicle_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
