@@ -133,7 +133,7 @@ $allData = queryExecute($getAllDataQuery, true);
                             <img src="<?php echo PUBLIC_URL . 'images/default-image.jpg' ?>" alt="">
                         </div>
                         <div class="col-7">
-                            <h4 class="h5">Nhà xe Thiên Thanh</h4>
+            s                <h4 class="h5">Nhà xe Thiên Thanh</h4>
                             <ul>
                                 <li>Tuyến đường: <span class="font-weight-bold text-primary"><?php echo $data['begin'] . " - " . $data['end'] ?></span></li>
                                 <li>Xe: <span class="font-weight-bold text-primary"><?php echo $data['plate_number'] ?></span></li>
