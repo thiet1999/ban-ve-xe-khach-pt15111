@@ -54,7 +54,7 @@ $vehicles = queryExecute($getVehiclesQuery, true);
                                     <label for="">Tuyến đường<span class="text-danger">*</span></label>
                                     <select name="route_id" class="form-control">
                                         <?php foreach ($routes as $route) : ?>
-                                            <option value="<?php echo $route['id'] ?>"><?php echo $route['begin_point']."  -  ".$route['begin_point'] ?></option>
+                                            <option value="<?php echo $route['id'] ?>"><?php echo $route['begin_point']."  -  ".$route['end_point'] ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -74,11 +74,11 @@ $vehicles = queryExecute($getVehiclesQuery, true);
                                 </div>
                                 <div class="form-group">
                                     <label for="">Thời gian bắt đầu<span class="text-danger">*</span></label>
-                                    <input type="datetime" class="form-control" name="start_time">
+                                    <input type="datetime" class="form-control" name="start_time" value="<?php echo '0000-00-00 00:00:00.000000'?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Thời gian kết thúc<span class="text-danger">*</span></label>
-                                    <input type="datetime" class="form-control" name="end_time">
+                                    <input type="datetime" class="form-control" name="end_time" value="<?php echo '0000-00-00 00:00:00.000000'?>">
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
