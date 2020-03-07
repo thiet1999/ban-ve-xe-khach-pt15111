@@ -152,7 +152,7 @@ if (!$schedules) {
                         email: function() {
                             return $("input[name='email']").val();
                         },
-                        id: < ? = $user['id']; ? >
+                        id: <?= $user['id']; ?>
                     }
                 }
             },
