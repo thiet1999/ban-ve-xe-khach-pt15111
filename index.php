@@ -3,7 +3,7 @@
 session_start();
 require_once "./config/utils.php";
 $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
-
+$keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 // lấy dữ liệu từ Routes
 $getRoutesQuery = "select * from routes";
 $routes = queryExecute($getRoutesQuery, true);
@@ -47,12 +47,14 @@ $routes = queryExecute($getRoutesQuery, true);
                             <a class="nav-link" href="#">Thông tin</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo SEARCH_URL?>">Danh sách vé</a>
+                            <a class="nav-link" href="<?php echo SEARCH_URL ?>">Danh sách vé</a>
                         </li>
                         <li class="nav-item" style="<?php if ($loggedInUser !== null && $loggedInUser['role_id'] > 1) {
                                                         echo 'display:inline-block';
-                                                    }else {echo 'display:none';} ?>">
-                            <a class="nav-link" href="<?php echo ADMIN_URL . 'dashboard' ?>">Quản lý Trang Web</a>
+                                                    } else {
+                                                        echo 'display:none';
+                                                    } ?>">
+                            <a class="nav-link text-danger font-weight-bold text-uppercase" href="<?php echo ADMIN_URL . 'dashboard' ?>">Quản lý Trang Web</a>
                         </li>
 
                         <?php if ($loggedInUser) : ?>
@@ -83,17 +85,13 @@ $routes = queryExecute($getRoutesQuery, true);
     <!--END HEADER - START BANNER-->
     <div class="banner border-bottom pt-3 pb-3">
         <div class="container">
-            <h1 class="slogan h3 text-center text-capitalize">đặt vé xe trước, nhận chỗ sớm, không lo hết vé</h1>
+            <h1 class="slogan h2 m-5 text-center text-capitalize">đặt vé xe trước, nhận chỗ sớm, không lo hết vé</h1>
             <p class="text-center text-uppercase h4 font-weight-bold">tìm vé xe</p>
+
             <form action="<?php echo SEARCH_URL ?>" method="get" enctype="multipart/form-data">
                 <div class="row d-flex justify-content-center">
                     <div class="col-6 form-group">
-                        <select id="my-select" class="form-control" name="begin_point">
-                            <option value="" selected>Tuyến đường</option>
-                            <?php foreach ($routes as $route) : ?>
-                                <option value="<?php echo $route['id'] ?>"><?php echo $route['begin_point'] . "  -  " . $route['end_point'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                        <input type="text" class="form-control" name="keyword" value="" placeholder="Nhập địa điểm, giá vé, loại xe tìm kiếm ...">
                     </div>
                     <!-- <div class="col-4 form-group">
                         <label for="" class="text-capitalize font-weight-bold">ngày giờ</label>
