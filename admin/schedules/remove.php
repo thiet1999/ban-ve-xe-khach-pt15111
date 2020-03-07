@@ -11,19 +11,14 @@ include_once "../../config/utils.php";
 checkAdminLoggedIn();
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
 
-$getRemoveUserQuery = "select * from users where id = $id";
-$removeUser = queryExecute($getRemoveUserQuery, false);
-if(!$removeUser){
-    header("location: " . ADMIN_URL . "users?msg=Tài khoản không tồn tại");
+$getRemoveSchedulesQuery = "select * from route_schedules where id = $id";
+$removeSchedules = queryExecute($getRemoveSchedulesQuery, false);
+if(!$removeSchedules){
+    header("location: " . ADMIN_URL . "schedules?msg=Lịch trình không tồn tại");
     die;
 }
 
-if($removeUser['role_id'] >= $_SESSION[AUTH]['role_id']){
-    header("location: " . ADMIN_URL . "users?msg=Không đủ quyền hạn thực hiện hành động này");
-    die;
-}
-
-$removeUserQuery = "delete from users where id = $id";
-queryExecute($removeUserQuery, false);
-header("location: " . ADMIN_URL . "users?msg=Xóa tài khoản thành công");
+$removeSchedulesQuery = "delete from route_schedules where id = $id";
+queryExecute($removeSchedulesQuery, false);
+header("location: " . ADMIN_URL . "schedules?msg=Xóa tài khoản thành công");
 die;

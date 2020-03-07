@@ -4,15 +4,22 @@ require_once '../../config/utils.php';
 checkAdminLoggedIn();
 
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
-$roleId = isset($_GET['role']) == true ? $_GET['role'] : false;
+$routeId = isset($_GET['route']) == true ? $_GET['route'] : false;
 
-$getSchedulesQuery = "select rs.*,
-                            r.begin_point as begin,
-                            r.end_point as end,
-                            v.id
-                        from routes r join route_schedules rs on rs.route_id = r.id
-                        join vehicles v on rs.vehicle_id = v.id
-                        ";
+// get query from schedules
+$getSchedulesQuery = "select rs.*, r.begin_point as begin, r.end_point as end, v.plate_number as plate_number
+                                from vehicles v join route_schedules rs on v.id=rs.vehicle_id
+                                join routes r
+                                on rs.route_id = r.id";
+
+// get query from vehicles
+$getVehiclesQuery = "select * from vehicles";
+$vehicles = queryExecute($getVehiclesQuery, true);
+
+// get query from routes
+$getRoutesQuery = "select * from routes";
+$routes = queryExecute($getRoutesQuery, true);
+
 // tìm kiếm
 if ($keyword !== "") {
     $getSchedulesQuery .= " where (rs.route_id like '%$keyword%'
@@ -21,6 +28,13 @@ if ($keyword !== "") {
                             or rs.start_time like '%$keyword%'
                             or rs.end_time like '%$keyword%')
                       ";
+    if ($routeId !== false && $routeId !== "") {
+        $getRoutesQuery .= " and rs.route_id = $routeId";
+    }
+}else{
+    if ($routeId !== false && $routeId !== "") {
+        $getRoutesQuery .= " and rs.route_id = $routeId";
+    }
 }
 $schedules = queryExecute($getSchedulesQuery, true);
 
@@ -71,26 +85,16 @@ $schedules = queryExecute($getSchedulesQuery, true);
                             <!-- Filter  -->
                             <form action="" method="get">
                                 <div class="form-row">
-                                    <div class="form-group col-4">
+                                    <div class="form-group col-6">
                                         <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập lịch trình, thời gian, giá vé...">
                                     </div>
-                                    <div class="form-group col-3">
-                                        <select name="role" class="form-control">
+                                    <div class="form-group col-4">
+                                        <select name="route" class="form-control">
                                             <option selected value="">Tuyến đường</option>
-                                            <?php foreach ($roles as $ro) : ?>
-                                                <option <?php if ($roleId === $ro['id']) {
+                                            <?php foreach ($routes as $route) : ?>
+                                                <option <?php if ($routeId === $route['id']) {
                                                             echo "selected";
-                                                        } ?> value="<?php echo $ro['id'] ?>"><?php echo $ro['name'] ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-3">
-                                        <select name="role" class="form-control">
-                                            <option selected value="">Phương tiện</option>
-                                            <?php foreach ($roles as $ro) : ?>
-                                                <option <?php if ($roleId === $ro['id']) {
-                                                            echo "selected";
-                                                        } ?> value="<?php echo $ro['id'] ?>"><?php echo $ro['name'] ?></option>
+                                                        } ?> value="<?php echo $route['id'] ?>"><?php echo $route['begin_point'] . "  -  " . $route['end_point'] ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -117,8 +121,8 @@ $schedules = queryExecute($getSchedulesQuery, true);
                                 <?php foreach ($schedules as $schedule) : ?>
                                     <tr>
                                         <td><?php echo $schedule['id'] ?></td>
-                                        <td><?php echo $schedule['route_id'] ?></td>
-                                        <td><?php echo $schedule['vehicle_id'] ?></td>
+                                        <td><?php echo $schedule['begin']."  -  ".$schedule['end'] ?></td>
+                                        <td><?php echo $schedule['plate_number'] ?></td>
                                         <td>
                                             <?php echo $schedule['price'] ?>
                                         </td>
