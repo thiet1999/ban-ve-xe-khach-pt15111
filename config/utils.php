@@ -3,7 +3,7 @@
 # Quy định constants
 define('BASE_URL', 'http://localhost/ban-ve-xe-khach-pt15111/');
 define('ADMIN_URL', BASE_URL . 'admin/');
-define('CART_URL', BASE_URL . 'shopping_cart/');
+define('SEARCH_URL', BASE_URL . 'search/');
 define('PUBLIC_URL', BASE_URL . 'public/');
 define('ADMIN_ASSET_URL', PUBLIC_URL . 'admin/');
 

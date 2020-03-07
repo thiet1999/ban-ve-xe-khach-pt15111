@@ -51,21 +51,13 @@ $vehicles = queryExecute($getVehiclesQuery, true);
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Điểm đầu<span class="text-danger">*</span></label>
+                                    <label for="">Tuyến đường<span class="text-danger">*</span></label>
                                     <select name="route_id" class="form-control">
                                         <?php foreach ($routes as $route) : ?>
-                                            <option value="<?php echo $route['id'] ?>"><?php echo $route['begin_point'] ?></option>
+                                            <option value="<?php echo $route['id'] ?>"><?php echo $route['begin_point']."  -  ".$route['begin_point'] ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
-                                <!-- <div class="form-group">
-                                    <label for="">Điểm cuối<span class="text-danger">*</span></label>
-                                    <select name="route_id" class="form-control">
-                                        <?php foreach ($routes as $route) : ?>
-                                            <option value="<?php echo $route['id'] ?>"><?php echo $route['end_point'] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                </div> -->
                                 <div class="form-group">
                                     <label for="">Biển số xe<span class="text-danger">*</span></label>
                                     <select name="vehicle_id" class="form-control">
@@ -78,7 +70,7 @@ $vehicles = queryExecute($getVehiclesQuery, true);
                             <div class="col-md-6">
                             <div class="form-group">
                                     <label for="">Giá tiền<span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" name="price">
+                                    <input type="number" class="form-control" name="price" min="0"
                                 </div>
                                 <div class="form-group">
                                     <label for="">Thời gian bắt đầu<span class="text-danger">*</span></label>

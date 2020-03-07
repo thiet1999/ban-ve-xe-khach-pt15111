@@ -35,7 +35,7 @@ $routes = queryExecute($getRoutesQuery, true);
             <div class="row">
                 <div class="col-md-2 dashboard-logo">
                     <a href="<?php BASE_URL ?>">
-                        <img src="public/images/logo1.ico" alt="LOGO" class="">
+                        <img src="<?php echo PUBLIC_URL . 'images/logo1.ico' ?>" alt="LOGO" class="">
                     </a>
                 </div>
                 <div class="col-md-10">
@@ -46,15 +46,14 @@ $routes = queryExecute($getRoutesQuery, true);
                         <li class="nav-item">
                             <a class="nav-link" href="#">Thông tin</a>
                         </li>
-                        <?php if ($loggedInUser !== null && $loggedInUser['role_id'] < 2) : ?>
-                            <li class="nav-item" style="display: none">
-                                <a class="nav-link" href="<?php echo ADMIN_URL . 'dashboard' ?>">Quản lý Trang Web</a>
-                            </li>
-                        <?php else : ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo ADMIN_URL . 'dashboard' ?>">Quản lý Trang Web</a>
-                            </li>
-                        <?php endif; ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo SEARCH_URL?>">Danh sách vé</a>
+                        </li>
+                        <li class="nav-item" style="<?php if ($loggedInUser !== null && $loggedInUser['role_id'] > 1) {
+                                                        echo 'display:inline-block';
+                                                    }else {echo 'display:none';} ?>">
+                            <a class="nav-link" href="<?php echo ADMIN_URL . 'dashboard' ?>">Quản lý Trang Web</a>
+                        </li>
 
                         <?php if ($loggedInUser) : ?>
                             <li class="nav-item dropdown">
@@ -86,17 +85,17 @@ $routes = queryExecute($getRoutesQuery, true);
         <div class="container">
             <h1 class="slogan h3 text-center text-capitalize">đặt vé xe trước, nhận chỗ sớm, không lo hết vé</h1>
             <p class="text-center text-uppercase h4 font-weight-bold">tìm vé xe</p>
-            <form action="<?php echo CART_URL ?>" method="get" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-4 form-group">
-                        <label for="my-select" class="text-capitalize font-weight-bold">Điểm đầu</label>
+            <form action="<?php echo SEARCH_URL ?>" method="get" enctype="multipart/form-data">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-6 form-group">
                         <select id="my-select" class="form-control" name="begin_point">
+                            <option value="" selected>Tuyến đường</option>
                             <?php foreach ($routes as $route) : ?>
-                                <option value="<?php echo $route['id'] ?>"><?php echo $route['begin_point'] ?></option>
+                                <option value="<?php echo $route['id'] ?>"><?php echo $route['begin_point'] . "  -  " . $route['end_point'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="col-4 form-group">
+                    <!-- <div class="col-4 form-group">
                         <label for="" class="text-capitalize font-weight-bold">ngày giờ</label>
 
                         <div class="form-group">
@@ -114,15 +113,7 @@ $routes = queryExecute($getRoutesQuery, true);
                             });
                         </script>
 
-                    </div>
-                    <div class="col-4 form-group">
-                        <label for="my-select" class="text-capitalize font-weight-bold">điểm cuối</label>
-                        <select id="my-select" class="form-control" name="">
-                            <?php foreach ($routes as $route) : ?>
-                                <option value="<?php echo $route['id'] ?>"><?php echo $route['end_point'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="text-center">
                     <button type="submit" name="btn-submit" class="btn btn-primary">Tìm Vé</button>
